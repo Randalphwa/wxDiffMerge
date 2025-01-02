@@ -1,0 +1,5 @@
+@PACKAGE@ (@MAJOR@.@MINOR@.@REVISION@.@BUILDNUM@) non-free; urgency=low
+
+  * Release notes in the manual: /usr/share/doc/@PACKAGE@/DiffMergeManual.pdf
+
+ -- Jeff Hostetler <jeffh@sourcegear.com>  @RFCDATE@

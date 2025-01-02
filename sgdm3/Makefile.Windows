@@ -1,0 +1,107 @@
+## Makefile.Windows -- meta makefile for DiffMerge on Windows.
+## This does a full build of wxWidgets and then DiffMerge.
+## This is a wrapper for the lazy and/or the build server.
+##
+## TO select either 32- or 64-bit builds, start the appropriate
+## DOSBOX with the compiler environment set up (vcvarsall.bat)
+##
+## Do *NOT* pass in "ARCH" to try to change anything.
+##
+##################################################################
+
+## we have to use '/' on the DOS paths because GNU make eats
+## '\' characters (or try to manage C:\\\\\\\\build\\\\\\\\sgdm).
+
+BUILD_DOS:=$(shell dirname ${PWD})/builds
+BUILD_CYG:=$(shell dirname ${PWD})/builds
+
+OS_NAME:=Windows
+
+MODE:=Release
+####MODE:=Debug
+
+include version.inc
+
+$(info Building $(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM) : $(BUILD_BUILDLABEL) : $(BUILD_CSID))
+
+BUILD_COPYRIGHTDATE:=2003-$(shell date +"%Y")
+
+## set ARCH, ARCH_PACKAGE
+include src/Config/Arch.Windows.inc
+
+##################################################################
+
+ifeq ($(strip $(BUILD_BUILDLABEL)),)
+DOT_BUILDLABEL:=
+else
+DOT_BUILDLABEL:=.$(BUILD_BUILDLABEL)
+endif
+
+BUILD_VERSION:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)$(DOT_BUILDLABEL)
+
+##################################################################
+
+WXWIDGETS_VERSION:=3.2.6
+
+##################################################################
+
+all:	maybe_build_thirdparty build_diffmerge report_outputs
+
+##################################################################
+## Cheap test to see if we need to build wxWidgets.
+
+maybe_build_thirdparty:
+	if [ ! -d $(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)/wxWidgets-$(WXWIDGETS_VERSION) ] ; then \
+		$(MAKE) -C thirdparty -f Makefile.$(OS_NAME) \
+			   BUILD_DOS=$(BUILD_DOS) \
+			   BUILD_CYG=$(BUILD_CYG) \
+			   OS_NAME=$(OS_NAME) \
+			   MODE=$(MODE) \
+			   ARCH=$(ARCH) \
+			   ARCH_PACKAGE=$(ARCH_PACKAGE) \
+			   WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) \
+			   _all; \
+	else \
+		echo Skipping compile of wxWidgets....; \
+	fi
+
+##################################################################
+
+build_diffmerge:
+	$(MAKE) -C src -f Makefile.Windows \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_CSID=$(BUILD_CSID) \
+				BUILD_VERSION=$(BUILD_VERSION)
+
+##################################################################
+
+report_outputs:
+	@$(MAKE) -C src -f Makefile.Windows --no-print-directory \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_CSID=$(BUILD_CSID) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				report_outputs

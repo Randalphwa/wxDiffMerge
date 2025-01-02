@@ -1,0 +1,6 @@
+@PACKAGE@
+	requires_terminal=false
+	expects_uris=false
+	command=@EXE@
+	can_open_multiple_files=true
+	name=SourceGear DiffMerge

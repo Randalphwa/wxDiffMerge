@@ -1,0 +1,19 @@
+## Makefile, GNU Makefile for sgdm3/key for Linux.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix
+MY_LIBDEPS=	Makefile.Unix
+
+include ../Config/Config.inc
+include ../key/key.inc
+
+##################################################################
+
+SRCS=		$(KEY_SRCS)
+TARGET_LIB=	$(KEY_LIB)
+
+##################################################################
+
+include ../Config/ConfigLibrary.inc

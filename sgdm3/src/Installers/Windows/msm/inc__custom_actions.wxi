@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- After the Shell Extension is installed in the registry  -->
+  <!-- someone needs to call SHChangeNotify() or else the new  -->
+  <!-- extension might not be recognized until the next reboot -->
+  <!-- (because of the agressive cacheing in Explorer.exe).    -->
+
+  <Binary
+     Id="ShellExtensionDLL"
+     SourceFile="$(var.ShellExtensionDLL)" />
+
+  <CustomAction 
+     Id="ca_Call_SHChangeNotify"
+     Return="check"
+     Execute="deferred"
+     BinaryKey="ShellExtensionDLL"
+     DllEntry="Call_SHChangeNotify"
+     HideTarget="yes" />
+
+  <InstallExecuteSequence>
+
+    <Custom
+       Action="ca_Call_SHChangeNotify"
+       Before="InstallFinalize" />
+
+  </InstallExecuteSequence>
+
+</Include>

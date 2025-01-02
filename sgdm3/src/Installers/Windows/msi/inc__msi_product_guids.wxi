@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010-2011 SourceGear, LLC
+-->
+<Include>
+
+	<!-- The PRODUCT CODE needs changing every time we release a new version, where a new version
+	     is identified by incrementing one of the first three numbers in the version number.
+	     The fourth number is ignored by Windows Installer.
+	     In W.X.Y.Z, only changes to W, X, or Y matter to Windows Installer. Shipping a new
+	     version means incrementing one of them and changing the ProductCode GUID, below. -->
+
+	<?if $(var.Version3) = "5.0.0" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{37FC2E6D-6F5E-4595-A186-E1F8E1ACD629}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{B23B713D-C50E-47E4-B9BA-6BDCA800E0A7}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	<?if $(var.Version3) = "4.3.0" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{9A8A16C2-6998-4479-B994-407BCDDA5E43}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{CB3F215D-147B-4463-AC7A-EA068E0D6786}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	<?if $(var.Version3) = "4.2.2" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{54DDE67F-48C2-4341-AD08-164D85C6C0CE}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{F1E30930-089F-4969-8BC4-785389126011}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	
+	<?if $(var.Version3) = "4.2.0" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{F6BEC317-F689-4158-B1F0-F229B794CFBA}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{655AC758-FFBE-4DAC-9205-FDBC10B50DB2}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	<?if $(var.Version3) = "4.1.0" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{D2D82850-E23B-4923-99B9-F1A66A310A3F}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{C8920AE1-CA95-4167-AADA-0B32E2E9445D}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	<?if $(var.Version3) = "4.0.0" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{86B376D1-BD9F-403A-B122-E82A7AE5451E}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{95BBD395-61D9-4B2C-8F3A-C89EEA0ADBC6}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	<!-- 3.99.0 was never actually released.  I just needed it
+	     to let us test the check-for-update stuff from officially
+	     installed test versions. -->
+	<?if $(var.Version3) = "3.99.0" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{24121A5B-7189-4D02-854D-8D86E98727E5}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{6075F14C-001F-45BE-972E-7006FD1B4C98}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	<?if $(var.Version3) = "3.3.2" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{C355056C-D84F-4E9C-AE60-B4F446B8BEA6}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{88C1A719-C868-4FD1-8F95-8E5AEA5BF206}" ?>
+		<?endif ?>
+	<?endif ?>
+
+	<?if $(var.Version3) = "3.3.1" ?>
+		<?if $(sys.BUILDARCH) = "x64" ?>
+			<?define GUID_ProductCode = "{44E6D779-FB70-4CA9-80A0-3ED5B5F817E4}" ?>
+		<?else ?>
+			<?define GUID_ProductCode = "{72F67711-9512-4C0F-A06B-BB61C76CD55D}" ?>
+		<?endif ?>
+	<?endif ?>
+
+</Include>

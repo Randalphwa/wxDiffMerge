@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010-2011 SourceGear, LLC
+-->
+<Include>
+
+  <!-- Collect all of the random registry keys that need to create. -->
+  <!-- The HKLM values will be virtualized on 64-bit systems        -->
+  <!-- depending on which installer we are running.                 -->
+
+  <?define HKLM_RegistryKey = "Software\SourceGear\Common\DiffMerge\Installer" ?>
+
+  <?if $(sys.BUILDARCH) = "x64" ?>
+  <?define Is64 = "yes" ?>
+  <?else ?>
+  <?define Is64 = "no" ?>
+  <?endif ?>
+
+</Include>

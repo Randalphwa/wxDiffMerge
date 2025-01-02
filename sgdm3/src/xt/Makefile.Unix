@@ -1,0 +1,21 @@
+## Makefile, GNU Makefile for sgdm3/xt for Linux.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix
+MY_LIBDEPS=	Makefile.Unix
+
+
+include ../Config/Config.inc
+include ../util/util.inc
+include ../xt/xt.inc
+
+##################################################################
+
+SRCS=		$(XT_SRCS)
+TARGET_LIB=	$(XT_LIB)
+
+##################################################################
+
+include ../Config/ConfigLibrary.inc

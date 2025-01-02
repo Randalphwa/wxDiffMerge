@@ -1,0 +1,14 @@
+Package: @PACKAGE@
+Priority: optional
+Section: devel
+Maintainer: Jeff Hostetler <jeffh@sourcegear.com>
+Architecture: @ARCH_PACKAGE@
+Version: @MAJOR@.@MINOR@.@REVISION@.@BUILDNUM@
+Depends: @DEPENDS@
+Installed-Size: 10240
+Homepage: http://www.sourcegear.com/diffmerge
+Description: SourceGear DiffMerge
+ Revision @MAJOR@.@MINOR@.@REVISION@.@BUILDNUM@ @BUILDLABEL@
+ Copyright (C) @COPYRIGHTDATE@ SourceGear LLC. All Rights Reserved.
+ A file/folder difference viewer/editor with support for 3-way
+ file merges.

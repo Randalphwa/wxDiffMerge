@@ -1,0 +1,21 @@
+## Makefile, GNU Makefile for sgdm3/poi for Linux.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix
+MY_LIBDEPS=	Makefile.Unix
+
+include ../Config/Config.inc
+include ../util/util.inc
+include ../fim/fim.inc
+include ../poi/poi.inc
+
+##################################################################
+
+SRCS=		$(POI_SRCS)
+TARGET_LIB=	$(POI_LIB)
+
+##################################################################
+
+include ../Config/ConfigLibrary.inc

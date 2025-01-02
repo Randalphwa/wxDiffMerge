@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010-2011 SourceGear, LLC
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?include inc__msm_guids.wxi ?>
+  <?include inc__variables.wxi ?>
+
+  <Module
+     Id="MSM_DiffMerge"
+     Language="1033"
+     Version="$(var.Version)">
+
+    <Package
+       Id="$(var.GUID_Package_msm)"
+       Description="Merge Module for SourceGear DiffMerge $(var.BUILD_VERSION) ($(var.ARCH_PACKAGE))"
+       Manufacturer="SourceGear, LLC"
+       InstallerVersion="300"
+       InstallPrivileges="elevated" 
+       InstallScope="perMachine"
+       Comments="Merge Module for SourceGear DiffMerge $(var.BUILD_VERSION) [$(var.ARCH_PACKAGE)]" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <?if $(sys.BUILDARCH) = "x64" ?>
+      <?include inc__directory_target64.wxi ?>
+      <?endif?>
+
+      <?if $(sys.BUILDARCH) = "x86" ?>
+      <?include inc__directory_target32.wxi ?>
+      <?endif?>
+
+      <Directory Id="ProgramMenuFolder">
+	<Directory Id="dir_menu" Name="SourceGear DiffMerge" />
+      </Directory>
+
+    </Directory>
+
+
+    <?include inc__custom_actions.wxi ?>
+
+    <ComponentGroupRef Id="frag__cg__DiffMerge_exe" />
+    <ComponentGroupRef Id="frag__cg__DiffMergeManual_pdf" />
+    <ComponentGroupRef Id="frag__cg__License_html" />
+    <ComponentGroupRef Id="frag__cg__License_rtf" />
+    <ComponentGroupRef Id="frag__cg__sgdm_cygwin_sh" />
+    <ComponentGroupRef Id="frag__cg__MoreFromSourceGear" />
+    <ComponentGroupRef Id="frag__cg__ProgramMenuFolder" />
+    <?if $(sys.BUILDARCH) = "x64" ?>
+    <ComponentGroupRef Id="frag__cg__ShellExtension64_dll" />
+    <?endif ?>
+    <?if $(sys.BUILDARCH) = "x86" ?>
+    <ComponentGroupRef Id="frag__cg__ShellExtension32_dll" />
+    <?endif ?>
+    <ComponentGroupRef Id="frag__cg__set_PATH" />
+
+  </Module>
+</Wix>

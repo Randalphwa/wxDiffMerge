@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- Declare the package parameters and take care of any -->
+  <!-- per-user/per-machine and any 32-bit/64-bit issues.  -->
+
+  <!-- In the following PACKAGE statements we DO NOT set   -->
+  <!-- the 'platform' field.  We get this from the -arch   -->
+  <!-- on the command line. -->
+
+  <Package
+     Description="SourceGear DiffMerge $(var.BUILD_VERSION) ($(var.ARCH_PACKAGE))"
+     InstallerVersion="300"
+     Compressed="yes" 
+     InstallPrivileges="elevated" 
+     InstallScope="perMachine"
+     Comments="Installer for SourceGear DiffMerge $(var.BUILD_VERSION) [$(var.ARCH_PACKAGE)]" />
+
+  <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+
+  <WixVariable Id="WixUISupportPerUser" Value="0" />
+
+</Include>

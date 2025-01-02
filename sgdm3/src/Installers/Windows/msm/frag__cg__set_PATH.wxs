@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="$(var.dir_DiffMergeNative)">
+      <Component 
+	 Id="cmp_set_path"
+	 Guid="$(var.GUID_Set__PATH)"
+	 Win64="$(var.Is64)">
+
+      <Environment
+	 Id="SystemPathEnv"
+	 Action="set"
+	 Part="last"
+	 Name="PATH"
+	 Permanent="no" 
+	 System="yes"
+	 Value="[$(var.dir_DiffMergeNative)]" />
+
+      <RegistryValue
+	 Root="HKLM"
+	 Key="$(var.HKLM_RegistryKey)"
+	 Type="integer"
+	 Name="KeyPath__set_path"
+	 Value="1"
+	 KeyPath="yes" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__set_PATH">
+      <ComponentRef Id="cmp_set_path" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

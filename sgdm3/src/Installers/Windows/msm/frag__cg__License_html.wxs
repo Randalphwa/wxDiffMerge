@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="$(var.dir_DiffMergeNative)">
+      <Component 
+         Id="cmp30B8EEFE5D809F4CF26BDD059EB7E7B6"
+	 Guid="$(var.GUID_License_html)"
+	 Win64="$(var.Is64)">
+
+        <File
+	   Id="fil8338796CA91B64E5088F19EF705E89E6"
+	   CompanionFile="file__diffmerge_exe"
+	   Source="$(var.LayoutRoot)\License.html" />
+
+	<RegistryValue
+	    Root="HKLM"
+	    Key="$(var.HKLM_RegistryKey)"
+	    Type="string"
+	    Name="LicenseHtml"
+	    Value="[$(var.dir_DiffMergeNative)]License.html" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__License_html">
+      <ComponentRef Id="cmp30B8EEFE5D809F4CF26BDD059EB7E7B6" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

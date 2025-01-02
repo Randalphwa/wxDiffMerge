@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- As part of the fallout from not using <MajorUpgrade>, we -->
+  <!-- need to take care of the search for related products and -->
+  <!-- versions of this product and define our own actions.     -->
+
+  <CustomAction 
+     Id="Prevent_Downgrading" 
+     Error="A newer version has already been installled." />
+
+  <InstallUISequence>
+    <Custom
+       Action="Prevent_Downgrading"
+       After="FindRelatedProducts">NEWER_VERSION_OF_THIS_PRODUCT</Custom>
+  </InstallUISequence>
+
+  <InstallExecuteSequence>
+
+    <Custom
+       Action="Prevent_Downgrading"
+       After="FindRelatedProducts">NEWER_VERSION_OF_THIS_PRODUCT</Custom>
+
+    <RemoveExistingProducts
+       After="InstallInitialize" />
+
+  </InstallExecuteSequence>
+
+</Include>

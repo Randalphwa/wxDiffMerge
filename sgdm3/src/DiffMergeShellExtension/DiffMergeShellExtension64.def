@@ -1,0 +1,10 @@
+; DiffMergeShellExtension.def : Declares the module parameters.
+
+LIBRARY      "SourceGearDiffMergeShellExtension64.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE
+	Call_SHChangeNotify	PRIVATE

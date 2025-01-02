@@ -1,0 +1,5 @@
+?package(@PACKAGE@):needs="X11" \
+  section="Applications/Programming" \
+  title="SourceGear DiffMerge" \
+  command="@EXE@" \
+  icon="/usr/share/pixmaps/@PACKAGE@.xpm"

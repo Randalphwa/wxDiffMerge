@@ -1,0 +1,21 @@
+## Makefile, GNU Makefile for sgdm3/rs for Linux.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix
+MY_LIBDEPS=	Makefile.Unix
+
+
+include ../Config/Config.inc
+include ../util/util.inc
+include ../rs/rs.inc
+
+##################################################################
+
+SRCS=		$(RS_SRCS)
+TARGET_LIB=	$(RS_LIB)
+
+##################################################################
+
+include ../Config/ConfigLibrary.inc

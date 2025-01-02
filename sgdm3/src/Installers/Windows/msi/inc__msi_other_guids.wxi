@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010-2011 SourceGear, LLC
+-->
+<Include>
+
+  <?if $(sys.BUILDARCH) = "x64" ?>
+
+  <?define GUID_readme_txt = "{A6D212E4-A19E-4C0B-9CE4-1EA40A99B6C6}" ?>
+
+  <?define GUID_DesktopFolder_DiffMerge_exe = "{14908DCF-EA5E-4D3E-B8D1-02828C4E80EB}" ?>
+
+  <?else ?>
+
+  <?define GUID_readme_txt = "{48F6B9DF-32D0-419B-BAB7-BE2F092C7E94}" ?>
+
+  <?define GUID_DesktopFolder_DiffMerge_exe = "{6EAB9EA9-EAC0-4EFA-850E-CE9891532B8F}" ?>
+
+  <?endif ?>
+
+</Include>

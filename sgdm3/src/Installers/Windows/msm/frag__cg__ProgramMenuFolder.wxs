@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="dir_menu">
+
+      <Component 
+	 Id="cmp__menu__diffmerge_exe"
+	 Guid="$(var.GUID_ProgramMenuFolder_DiffMerge_exe)">
+
+	<Shortcut
+	   Id="menu__diffmerge_exe"
+	   Name="DiffMerge"
+	   Description="Compare and merge files and folders"
+	   Target="[$(var.dir_DiffMergeNative)]sgdm.exe"
+	   WorkingDirectory="$(var.dir_DiffMergeNative)" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="integer"
+	   Name="KeyPath__program_menu_shortcut_diffmerge_exe"
+	   Value="1"
+	   KeyPath="yes" />
+
+      </Component>
+
+      <Component 
+	 Id="cmp__menu__diffmerge_chm"
+	 Guid="$(var.GUID_ProgramMenuFolder_DiffMerge_chm)">
+
+	<Shortcut
+	   Id="menu__diffmerge_chm"
+	   Name="DiffMerge Help"
+	   Description="Help for DiffMerge"
+	   Target="[$(var.dir_DiffMergeNative)]DiffMerge.chm"
+	   WorkingDirectory="$(var.dir_DiffMergeNative)" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="integer"
+	   Name="KeyPath__program_menu_shortcut_diffmerge_chm"
+	   Value="1"
+	   KeyPath="yes" />
+
+      </Component>
+
+      <Component 
+	 Id="cmp__menu__manual_pdf"
+	 Guid="$(var.GUID_ProgramMenuFolder_DiffMergeManual_pdf)">
+
+	<Shortcut
+	   Id="menu__manual_pdf"
+	   Name="DiffMerge Manual"
+	   Description="PDF Manual"
+	   Target="[$(var.dir_DiffMergeNative)]DiffMerge.pdf"
+	   WorkingDirectory="$(var.dir_DiffMergeNative)" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="integer"
+	   Name="KeyPath__program_menu_shortcut_diffmergemanual_pdf"
+	   Value="1"
+	   KeyPath="yes" />
+
+      </Component>
+
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__ProgramMenuFolder">
+
+      <ComponentRef Id="cmp__menu__diffmerge_exe" />
+      <ComponentRef Id="cmp__menu__diffmerge_chm" />
+      <ComponentRef Id="cmp__menu__manual_pdf" />
+
+    </ComponentGroup>
+  </Fragment>
+</Wix>
+

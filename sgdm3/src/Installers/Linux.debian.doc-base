@@ -1,0 +1,9 @@
+Document: @PACKAGE@
+Title: Manual for SourceGear DiffMerge
+Author: Jeff Hostetler
+Abstract:
+ This is the manual for SourceGear DiffMerge @MAJOR@.@MINOR@.@REVISION@.@BUILDNUM@ @BUILDLABEL@
+Section: Programming
+
+Format: PDF
+Files: /usr/share/doc/@PACKAGE@/DiffMergeManual.pdf

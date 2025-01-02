@@ -1,0 +1,155 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+#include "GEN_BuildNumber.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION		VER_MAJOR_VERSION,VER_MINOR_VERSION,VER_MINOR_SUBVERSION,VER_BUILD_NUMBER
+ PRODUCTVERSION		VER_MAJOR_VERSION,VER_MINOR_VERSION,VER_MINOR_SUBVERSION,VER_BUILD_NUMBER
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "SourceGear LLC"
+            VALUE "FileVersion", VER_MAJOR_VERSION_STR "." VER_MINOR_VERSION_STR "." VER_MINOR_SUBVERSION_STR "." VER_BUILD_NUMBER_STR
+            VALUE "LegalCopyright", VER_COPYRIGHT_RC_STR
+#if defined(WIN64)
+            VALUE "Comments", "SourceGear DiffMerge ShellExtension 64"
+            VALUE "FileDescription", "SourceGear DiffMerge ShellExtension 64"
+            VALUE "InternalName", "SourceGearDiffMergeShellExtension64.dll"
+            VALUE "OriginalFilename", "SourceGearDiffMergeShellExtension64.dll"
+            VALUE "ProductName", "SourceGear DiffMerge ShellExtension 64"
+#else
+            VALUE "Comments", "SourceGear DiffMerge ShellExtension 32"
+            VALUE "FileDescription", "SourceGear DiffMerge ShellExtension 32"
+            VALUE "InternalName", "SourceGearDiffMergeShellExtension32.dll"
+            VALUE "OriginalFilename", "SourceGearDiffMergeShellExtension32.dll"
+            VALUE "ProductName", "SourceGear DiffMerge ShellExtension 32"
+#endif
+            VALUE "ProductVersion", VER_MAJOR_VERSION_STR "." VER_MINOR_VERSION_STR "." VER_MINOR_SUBVERSION_STR "." VER_BUILD_NUMBER_STR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+#if defined(WIN64)
+IDR_DIFFMERGESHELLEXTENSION REGISTRY                "DiffMergeShellExtension64.rgs"
+IDR_SHEXT                   REGISTRY                "ShExt64.rgs"
+#else
+IDR_DIFFMERGESHELLEXTENSION REGISTRY                "DiffMergeShellExtension32.rgs"
+IDR_SHEXT                   REGISTRY                "ShExt32.rgs"
+#endif
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "DiffMergeIcon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "DiffMergeIcon16.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+#if defined(WIN64)
+    IDS_PROJNAME            "DiffMergeShellExtension64"
+#else
+    IDS_PROJNAME            "DiffMergeShellExtension32"
+#endif
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,43 @@
+// Config/BuildNumber.template ==> $(OBJDIR)/GEN_BuildNumber.h
+//////////////////////////////////////////////////////////////////
+
+#ifndef H_VERSION_H
+#define H_VERSION_H
+
+//////////////////////////////////////////////////////////////////
+// The following strange macros are for the build server. 
+// It will replace each of the @TOKEN@ with proper values.
+// And then write the result in "$(OBJDIR)/GEN_BuildNumber.h"
+// 
+// We have to do this for Windows since we can't pass -D args
+// when using a .sln.
+//////////////////////////////////////////////////////////////////
+
+#define VER_MAJOR_VERSION			@MAJOR@
+#define VER_MAJOR_VERSION_STR		"@MAJOR@"
+
+#define VER_MINOR_VERSION			@MINOR@
+#define VER_MINOR_VERSION_STR		"@MINOR@"
+
+#define VER_MINOR_SUBVERSION		@REVISION@
+#define VER_MINOR_SUBVERSION_STR	"@REVISION@"
+
+#define VER_BUILD_NUMBER			@BUILDNUM@
+#define VER_BUILD_NUMBER_STR		"@BUILDNUM@"
+
+#define VER_COPYRIGHT				_T("Copyright (C) @COPYRIGHTDATE@ SourceGear LLC. All Rights Reserved.")
+#define VER_COPYRIGHT_RC_STR		"Copyright (C) @COPYRIGHTDATE@ SourceGear LLC. All Rights Reserved."
+
+#define VER_BUILD_LABEL				_T("@BUILDLABEL@")
+
+#define VER_ARCH					_T("@ARCH@")
+#define VER_ARCH_PACKAGE			_T("@ARCH_PACKAGE@")
+
+#define VER_FLAVOR			_T("@FLAVOR@")
+#define VER_FLAVOR_ARCH			_T("@FLAVOR_ARCH@")
+
+#define VER_CSID			_T("@CSID@")
+
+//////////////////////////////////////////////////////////////////
+
+#endif//H_VERSION_H

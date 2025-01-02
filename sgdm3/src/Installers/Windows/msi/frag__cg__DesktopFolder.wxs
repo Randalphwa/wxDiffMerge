@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msi_other_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="DesktopFolder">
+
+      <Component 
+	 Id="cmp_desktop_folder_diffmerge_exe"
+	 Guid="$(var.GUID_DesktopFolder_DiffMerge_exe)"
+	 Win64="$(var.Is64)">
+
+	<Shortcut
+	   Id="desktop_shortcut_diffmerge_exe"
+	   Name="DiffMerge"
+	   Description="Compare and merge files and folders"
+	   Target="[dir_SourceGear]\Common\DiffMerge\sgdm.exe"
+	   WorkingDirectory="APPLICATIONFOLDER" />
+
+	<RegistryValue
+	   Root="HKCU"
+	   Key="$(var.HKCU_RegistryKey)"
+	   Type="integer"
+	   Name="KeyPath__desktop_shortcut_diffmerge_exe"
+	   Value="1"
+	   KeyPath="yes" />
+
+	<RemoveFolder Id="DesktopFolder" On="uninstall" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__DesktopFolder">
+      <ComponentRef Id="cmp_desktop_folder_diffmerge_exe" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>
+

@@ -1,0 +1,59 @@
+// DiffMergeShellExtension.idl : IDL source for DiffMergeShellExtension
+//
+// This file will be processed by the MIDL tool to
+// produce the type library (DiffMergeShellExtension.tlb) and marshalling code.
+//////////////////////////////////////////////////////////////////
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//////////////////////////////////////////////////////////////////
+// This file contains both 32 and 64 bit versions because MIDL
+// and MSVC complains if there are 2 .idl files in the project.
+// IDL allows CPP to process and substitute the GUIDs in the UUID
+// fields below, so I can just define them here and be done.
+// ***BUT*** the .rgs files CANNOT use this trick, so there are
+// copies of the important ones there too.  See ShExt{32,64}.rgs.
+//
+// See also GUID__AppId in DiffMergeShellExtension.cpp.
+// See also Installers/Windows/cg_ShellExtension{32,64}_dll.wxs.
+
+#if defined(WIN64)
+#define GUID__IShExt_Interface		C128D20B-7201-49DA-AE99-DB45ECC2737F	// In 3.3.0 was 44E742DB-D2A6-492F-8BD8-8BFAA77553E7
+#define GUID__TypeLibrary			824A65DB-ECCB-4772-86D1-9F1D08E38E5F	// In 3.3.0 was F5303D43-0E05-4AD7-8CC9-187D310B9079
+#define GUID__ShExt_Class			41E0355D-F488-487D-B7BA-D235D5834F1D	// In 3.3.0 was D1807478-413F-4EB2-97C8-90821C2358DB
+#define HELP__TypeLibrary			"DiffMergeShellExtension64 1.0 Type Library"
+#else
+#define GUID__IShExt_Interface		61CD8775-8927-433A-8349-33654C8D0F34	// In 3.3.0 was 44E742DB-D2A6-492F-8BD8-8BFAA77553E7
+#define GUID__TypeLibrary			14A8304D-F1C3-4829-8B48-BC2188998C58	// In 3.3.0 was F5303D43-0E05-4AD7-8CC9-187D310B9079
+#define GUID__ShExt_Class			2F410E77-24FD-4788-8412-3810115E7BCB	// In 3.3.0 was D1807478-413F-4EB2-97C8-90821C2358DB
+#define HELP__TypeLibrary			"DiffMergeShellExtension32 1.0 Type Library"
+#endif
+
+//////////////////////////////////////////////////////////////////
+
+[
+	object,
+	uuid( GUID__IShExt_Interface),
+	helpstring("IShExt Interface"),
+	pointer_default(unique)
+]
+interface IShExt : IUnknown{
+};
+[
+	uuid( GUID__TypeLibrary ),
+	version(1.0),
+	helpstring( HELP__TypeLibrary )
+]
+library DiffMergeShellExtensionLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid( GUID__ShExt_Class ),
+		helpstring("ShExt Class")
+	]
+	coclass ShExt
+	{
+		[default] interface IShExt;
+	};
+};

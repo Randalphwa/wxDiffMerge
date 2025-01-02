@@ -1,0 +1,23 @@
+/* XPM */
+const char * gXpm_file_merge_16x15[]={
+"16 15 5 1",
+". c None",
+"c c #585858",
+"b c #808080",
+"# c #c3c3c3",
+"a c #ffffff",
+"................",
+"..####...####...",
+"..#aaab..#aaab..",
+"..#aa#####aaa#c.",
+"..#aa#aaabaaa#c.",
+"..#aa#aaa#baa#c.",
+"..#aa#aaa#baa#c.",
+"..#aa#aaa#baa#c.",
+"..#aa#aaa#baa#c.",
+"..#aa#aaa#baa#c.",
+"..####aaa#b###c.",
+"...cc#aaa#bcccc.",
+".....#####b.....",
+"......bbbbb.....",
+"................"};

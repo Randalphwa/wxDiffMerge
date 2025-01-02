@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="$(var.dir_DiffMergeNative)">
+      <Component 
+	 Id="cmpC82BA74C7874AA382A9247F121EAE9EE"
+	 Guid="$(var.GUID_DiffMerge_exe)"
+	 Win64="$(var.Is64)">
+
+        <File 
+	   Id="file__diffmerge_exe"
+	   KeyPath="yes"
+	   Source="$(var.LayoutRoot)\sgdm.exe" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="InstallPath"
+	   Value="[$(var.dir_DiffMergeNative)]" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="Location"
+	   Value="[$(var.dir_DiffMergeNative)]sgdm.exe" />
+
+      </Component>
+
+      <?if $(sys.BUILDARCH) = "x64" ?>
+      <!-- The "InstallPath" and "Location" entries can be used to find the EXE.
+	   The ones above (included in the EXE component) are correct for the
+	   platform and will be found by 32-bit apps on 32-bit Windows and by
+	   64-bit apps on 64-bit Windows.  The following is a set of duplicate
+	   keys will get created in Wow6432Node so that 32-bit apps on 64-bit
+	   Windows can see them. -->
+      <Component
+	 Id="cmp__duplicate_keys"
+	 Guid="$(var.GUID_Duplicate_Keys)"
+	 Win64="no">
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="InstallPath"
+	   Value="[$(var.dir_DiffMergeNative)]" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="Location"
+	   Value="[$(var.dir_DiffMergeNative)]sgdm.exe" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="integer"
+	   Name="KeyPath__duplicate_keys"
+	   Value="1"
+	   KeyPath="yes" />
+
+      </Component>
+      <?endif?>
+
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__DiffMerge_exe">
+      <ComponentRef Id="cmpC82BA74C7874AA382A9247F121EAE9EE" />
+
+      <?if $(sys.BUILDARCH) = "x64" ?>
+      <ComponentRef Id="cmp__duplicate_keys" />
+      <?endif?>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
+

@@ -1,0 +1,125 @@
+## Makefile, GNU Makefile to build MSM and MSI installers for Windows using WIX.
+##################################################################
+
+BUILD_DOS:=C:/build/sgdm
+BUILD_CYG:=/cygdrive/c/build/sgdm
+
+OS_NAME:=Windows
+
+MODE:=Release
+
+BUILD_MAJOR:=4
+BUILD_MINOR:=2
+BUILD_REVISION:=0
+BUILD_BUILDNUM:=0
+BUILD_BUILDLABEL:=
+BUILD_COPYRIGHTDATE:=2003-$(shell date +"%Y")
+
+## set ARCH, ARCH_PACKAGE
+include ../../config/Arch.Windows.inc
+
+##################################################################
+
+ifeq ($(strip $(BUILD_BUILDLABEL)),)
+DOT_BUILDLABEL:=
+else
+DOT_BUILDLABEL:=.$(BUILD_BUILDLABEL)
+endif
+
+BUILD_VERSION:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)$(DOT_BUILDLABEL)
+
+##################################################################
+
+default:
+	@$(MAKE) -C msm -f Makefile.Windows \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				default
+	@$(MAKE) -C msi -f Makefile.Windows \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				default
+####	@$(MAKE) -C msi_xyz -f Makefile.Windows \
+####				BUILD_DOS=$(BUILD_DOS) \
+####				BUILD_CYG=$(BUILD_CYG) \
+####				OS_NAME=$(OS_NAME) \
+####				MODE=$(MODE) \
+####				ARCH=$(ARCH) \
+####				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+####				BUILD_MAJOR=$(BUILD_MAJOR) \
+####				BUILD_MINOR=$(BUILD_MINOR) \
+####				BUILD_REVISION=$(BUILD_REVISION) \
+####				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+####				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+####				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+####				BUILD_VERSION=$(BUILD_VERSION) \
+####				default
+
+report_outputs:
+	@$(MAKE) -C msm -f Makefile.Windows --no-print-directory \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				report_outputs
+	@$(MAKE) -C msi -f Makefile.Windows --no-print-directory \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				report_outputs
+####	@$(MAKE) -C msi_xyz -f Makefile.Windows --no-print-directory \
+####				BUILD_DOS=$(BUILD_DOS) \
+####				BUILD_CYG=$(BUILD_CYG) \
+####				OS_NAME=$(OS_NAME) \
+####				MODE=$(MODE) \
+####				ARCH=$(ARCH) \
+####				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+####				BUILD_MAJOR=$(BUILD_MAJOR) \
+####				BUILD_MINOR=$(BUILD_MINOR) \
+####				BUILD_REVISION=$(BUILD_REVISION) \
+####				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+####				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+####				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+####				BUILD_VERSION=$(BUILD_VERSION) \
+####				report_outputs

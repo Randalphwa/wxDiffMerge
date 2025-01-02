@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="$(var.dir_DiffMergeNative)">
+      <Component 
+         Id="cmpF091D108643C239107889ED887D1AB2D" 
+	 Guid="$(var.GUID_DiffMergeManual_pdf)"
+	 Win64="$(var.Is64)">
+
+        <File
+	   Id="fil84526BEC8F1D4A625B25FF7C64275FFB"
+	   CompanionFile="file__diffmerge_exe"
+	   Source="$(var.LayoutRoot)\DiffMerge.pdf" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="Manual"
+	   Value="[$(var.dir_DiffMergeNative)]DiffMerge.pdf" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__DiffMergeManual_pdf">
+      <ComponentRef Id="cmpF091D108643C239107889ED887D1AB2D" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

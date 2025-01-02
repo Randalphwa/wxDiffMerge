@@ -1,0 +1,20 @@
+## Makefile, GNU Makefile for sgdm3/util for Linux.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix
+MY_LIBDEPS=	Makefile.Unix
+
+include ../Config/Config.inc
+include ../key/key.inc
+include ../util/util.inc
+
+##################################################################
+
+SRCS=		$(UTIL_SRCS)
+TARGET_LIB=	$(UTIL_LIB)
+
+##################################################################
+
+include ../Config/ConfigLibrary.inc

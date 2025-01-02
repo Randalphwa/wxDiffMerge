@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="dir_DiffMerge64">
+
+      <!-- this is a bookkeeping GUID only for Windows Installer. -->
+      <!-- it does not appear inside the DLL proper. the other    -->
+      <!-- GUIDs have been extracted from and must match the TLB  -->
+      <!-- inside the DLL. -->
+
+      <Component
+	 Id="cmp__ShellExtension64_dll"
+	 Guid="$(var.GUID_ShellExtension64_dll)"
+	 Win64="yes">
+
+        <File
+	   Id="fil__ShellExtension64_dll"
+	   KeyPath="yes"
+	   Source="$(var.LayoutRoot)\SourceGearDiffMergeShellExtension64.dll">
+          <AppId
+	     Description="SourceGearDiffMergeShellExtension64"
+	     Id="{ED49B78A-417D-45CF-8E5A-68F0EE3E3916}">
+            <Class
+	       Id="{41E0355D-F488-487D-B7BA-D235D5834F1D}"
+	       Context="InprocServer32"
+	       Description="SourceGearDiffMergeShellExtension64 Class"
+	       ThreadingModel="apartment" />
+          </AppId>
+        </File>
+
+        <RegistryValue
+	   Root="HKCR"
+	   Key="*\ShellEx\ContextMenuHandlers\SourceGearDiffMergeShellExtension64"
+	   Value="{41E0355D-F488-487D-B7BA-D235D5834F1D}"
+	   Type="string"
+	   Action="write" />
+        <RegistryValue
+	   Root="HKCR"
+	   Key="AppID\SourceGearDiffMergeShellExtension64.DLL"
+	   Name="AppID"
+	   Value="{ED49B78A-417D-45CF-8E5A-68F0EE3E3916}"
+	   Type="string"
+	   Action="write" />
+        <RegistryValue
+	   Root="HKCR"
+	   Key="Directory\ShellEx\ContextMenuHandlers\SourceGearDiffMergeShellExtension64"
+	   Value="{41E0355D-F488-487D-B7BA-D235D5834F1D}"
+	   Type="string"
+	   Action="write" />
+
+        <RegistryValue
+	   Root="HKLM"
+	   Key="Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved"
+	   Name="{41E0355D-F488-487D-B7BA-D235D5834F1D}"
+	   Value="SourceGearDiffMergeShellExtension64"
+	   Type="string"
+	   Action="write" />
+
+	<!-- The following is only used by the EXE to see if the DLL feature was installed.  (Like InstallPath and Location.) -->
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="Extension"
+	   Value="[dir_DiffMerge64]SourceGearDiffMergeShellExtension64.DLL"
+	   Action="write" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__ShellExtension64_dll">
+      <ComponentRef Id="cmp__ShellExtension64_dll" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

@@ -1,0 +1,51 @@
+## Makefile.Apple -- meta makefile for DiffMerge on Apple.
+## This does a full build of wxWidgets and then DiffMerge.
+## This is a wrapper for the lazy and/or the build server.
+##################################################################
+
+OS_NAME:=Apple
+
+## BUILD -- Where do you want the binaries we build.
+BUILD:=$(shell dirname ${PWD})/builds
+$(info $(OS_NAME) builds will be rooted at: $(BUILD)/)
+
+## MODE  -- either "Debug" or "Release"
+MODE:=Release
+####MODE:=Debug
+
+include version.inc
+
+## set ARCH, ARCH_PACKAGE
+include src/Config/Arch.$(OS_NAME).inc
+
+WXWIDGETS_VERSION:=3.2.6
+
+$(info Building $(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM) : $(BUILD_BUILDLABEL) : $(BUILD_CSID))
+
+WXOBJ:=$(shell $(MAKE) -C thirdparty -f Makefile.$(OS_NAME) BUILD=$(BUILD) OS_NAME=$(OS_NAME) MODE=$(MODE) ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) VERSION=$(WXWIDGETS_VERSION) _wxroot)
+$(info Looking for WX objs in $(WXOBJ)...)
+
+##################################################################
+
+all:	maybe_build_thirdparty build_diffmerge report_outputs
+
+##################################################################
+## Cheap test to see if we need to build wxWidgets.
+
+maybe_build_thirdparty:
+	@if [ ! -d $(WXOBJ) ] ; then \
+		$(MAKE) -C thirdparty -f Makefile.$(OS_NAME) BUILD=$(BUILD) OS_NAME=$(OS_NAME) MODE=$(MODE) ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) VERSION=$(WXWIDGETS_VERSION) _all; \
+	else \
+		echo Skipping compile of wxWidgets....; \
+	fi
+
+##################################################################
+
+build_diffmerge:
+	$(MAKE) -C src -f Makefile.Unix BUILD=$(BUILD) MODE=$(MODE) OS_NAME=$(OS_NAME) ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) BUILD_MAJOR=$(BUILD_MAJOR) BUILD_MINOR=$(BUILD_MINOR) BUILD_REVISION=$(BUILD_REVISION) BUILD_BUILDNUM=$(BUILD_BUILDNUM) BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) BUILD_CSID=$(BUILD_CSID)
+
+##################################################################
+
+report_outputs:
+	@$(MAKE) -C src -f Makefile.Unix --no-print-directory BUILD=$(BUILD) MODE=$(MODE) OS_NAME=$(OS_NAME) ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) BUILD_MAJOR=$(BUILD_MAJOR) BUILD_MINOR=$(BUILD_MINOR) BUILD_REVISION=$(BUILD_REVISION) BUILD_BUILDNUM=$(BUILD_BUILDNUM) BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) BUILD_CSID=$(BUILD_CSID) report_outputs
+

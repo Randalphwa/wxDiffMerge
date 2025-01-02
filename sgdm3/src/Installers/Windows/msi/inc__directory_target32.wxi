@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- Define the target directory in program files. -->
+  <!-- See also the definition of ApplicationFolderName in WixUI.wxi. -->
+
+  <Directory Id="ProgramFilesFolder">
+    <Directory Id="dir_SourceGear" Name="SourceGear">
+      <Directory Id="APPLICATIONFOLDER" Name="DiffMerge">
+
+      </Directory>
+    </Directory>
+  </Directory>
+
+</Include>

@@ -1,0 +1,140 @@
+## NMAKE Makefile -- build wxWidgets in steps.
+##################################################################
+## assumes that third-party library archives have already been
+## downloaded in $Tarballs.
+##################################################################
+
+## we have to use '/' on the DOS paths because GNU make eats
+## '\' characters (or try to manage C:\\\\\\\\build\\\\\\\\sgdm).
+
+BUILD_DOS:=$(shell dirname ${PWD})/builds
+BUILD_CYG:=$(shell dirname ${PWD})/builds
+
+OS_NAME=Windows
+####MODE:=Release
+MODE:=Debug
+
+## set ARCH, ARCH_PACKAGE based upon the compiler selected by vcvarsall.bat
+include ../src/Config/Arch.$(OS_NAME).inc
+
+WXWIDGETS_VERSION:=3.2.6
+
+##################################################################
+## the name of the archive we downloaded.
+
+ARCHIVE_PATHNAME_CYG=Tarballs/wxWidgets-$(WXWIDGETS_VERSION).zip
+
+##################################################################
+## the name that the archive will expand (the top-level directory
+## within the archive) which can be different when we get wxMAC
+## vs wxWidgets (all).
+
+ARCHIVE_DIR=wxWidgets-$(WXWIDGETS_VERSION)
+
+##################################################################
+## we keep our own build of wxWidgets so that we can let sgdm link
+## with whichever version it wants (using the inplace versions of
+## wx-config so that we have no need for /usr or /usr/local) and can
+## keep multiple versions at the same time.
+##
+## RANT: Seems like every release they change the root directory
+## RANT: of the tarball/zip file.  Does it contain a single top
+## RANT: directory named wxWidgets-<version> or does it contain
+## RANT: just the contents with no single root)?
+
+####ZIP_PATHNAME_DOS=$(BUILD_DOS)/$(OS_NAME)/$(ARCH)/$(MODE)
+####SRC_PATHNAME_DOS=$(ZIP_PATHNAME_DOS)/$(ARCHIVE_DIR)
+ZIP_PATHNAME_DOS=$(BUILD_DOS)/$(OS_NAME)/$(ARCH)/$(MODE)/$(ARCHIVE_DIR)
+SRC_PATHNAME_DOS=$(ZIP_PATHNAME_DOS)
+
+####ZIP_PATHNAME_CYG=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)
+####SRC_PATHNAME_CYG=$(ZIP_PATHNAME_CYG)/$(ARCHIVE_DIR)
+ZIP_PATHNAME_CYG=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)/$(ARCHIVE_DIR)
+SRC_PATHNAME_CYG=$(ZIP_PATHNAME_CYG)
+
+OBJ_PATHNAME_CYG=$(SRC_PATHNAME_CYG)/build/msw
+
+##################################################################
+
+ifeq ($(MODE),Debug)
+XX_BUILD=debug
+XX_VC_LIB_INCLUDE=mswud
+else ifeq ($(MODE),Release)
+XX_BUILD=release
+XX_VC_LIB_INCLUDE=mswu
+else
+$(error stop unknown mode. MODE is $(MODE))
+endif
+
+## wxWidgets makefile only sets a TARGET_CPU for 64-bit.
+
+ifeq ($(ARCH),i686)
+XX_TARGET_CPU=
+XX_VC_LIB=vc_lib
+else ifeq ($(ARCH),amd64)
+XX_TARGET_CPU=amd64
+XX_VC_LIB=vc_x64_lib
+else
+$(error stop unknown architecture. ARCH is $(ARCH))
+endif
+
+##################################################################
+
+default:
+	echo What do you want to do...
+	exit 1
+
+##################################################################
+
+debug:
+	$(MAKE) MODE=Debug _all
+
+release:
+	$(MAKE) MODE=Release _all
+
+_all:	_unpack _compile
+
+##################################################################
+## Use unzip from cygwin to unpack the tarball so we need to use
+## cygwin-style pathnames.
+
+_unpack:	$(ZIP_PATHNAME_CYG)
+	unzip -q -d $(ZIP_PATHNAME_CYG) $(ARCHIVE_PATHNAME_CYG)
+
+$(ZIP_PATHNAME_CYG):
+	mkdir -p $(ZIP_PATHNAME_CYG)
+
+##################################################################
+## Call NMAKE and use the wxWidgets-supplied makefile.
+## We have to unset MAKEFLAGS because on a multi-level
+## recursive GNU make, we start accumulating recursive
+## stuff in it and that confuses NMAKE (giving U0165 error).
+
+_compile:
+	( cd $(OBJ_PATHNAME_CYG); \
+	  MAKEFLAGS=; \
+	  nmake -f makefile.vc UNICODE=1 RUNTIME_LIBS=static BUILD=$(XX_BUILD) TARGET_CPU=$(XX_TARGET_CPU) \
+	)
+
+samples:
+	( cd $(OBJ_PATHNAME_CYG); \
+	  MAKEFLAGS=; \
+	  nmake -f makefile.vc CXXFLAGS=/I..\\..\\include\\msvc UNICODE=1 RUNTIME_LIBS=static BUILD=$(XX_BUILD) TARGET_CPU=$(XX_TARGET_CPU) /NOLOGO sub_samples \
+	)
+
+##################################################################
+## echo the various important directory for use in building sgdm3.
+## we return the DOS paths.
+
+_wx_top:
+	@echo $(SRC_PATHNAME_DOS)
+
+_wx_include:
+	@echo $(SRC_PATHNAME_DOS)/include
+
+_wx_lib:
+	@echo $(SRC_PATHNAME_DOS)/lib/$(XX_VC_LIB)
+
+_wx_lib_include:
+	@echo $(SRC_PATHNAME_DOS)/lib/$(XX_VC_LIB)/$(XX_VC_LIB_INCLUDE)
+

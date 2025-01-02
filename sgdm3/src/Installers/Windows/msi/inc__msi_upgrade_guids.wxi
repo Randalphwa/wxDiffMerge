@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010-2019 SourceGear, LLC
+-->
+<Include>
+
+  <!-- This file contains UPGRADE CONSTANTS.  These allow -->
+  <!-- the Windows Installer system to detect different   -->
+  <!-- versions of the same or related products and then  -->
+  <!-- automatically uninstall older versions before      -->
+  <!-- installing this version *OR* disallow the install  -->
+  <!-- of this version if a newer version is already on   -->
+  <!-- the system.                                        -->
+  <!--                                                    -->
+  <!-- THESE VALUES SHOULD NEVER CHANGE.                  -->
+  <!--                                                    -->
+  <!-- I'm giving the 32-bit and 64-bit versions differnt -->
+  <!-- UPGRADE CODES so that both can exist on the system -->
+  <!-- at the same time and/or be independent of each     -->
+  <!-- other.  I'm not sure why one would need to do that -->
+  <!-- but it allows both versions of the Shell Extension -->
+  <!-- to be installed (on a 64-bit system).  On a 64-bit -->
+  <!-- Windows system, Explorer.exe is 64-bit and will    -->
+  <!-- only use the 64-bit extension DLL and if people    -->
+  <!-- want to use something like the Q-Dir (32-bit only) -->
+  <!-- they can install the 32-bit version.               -->
+  <!--                                                    -->
+  <!-- THESE VALUES ARE NEW WITH THE 3.3.1 RELEASE AND    -->
+  <!-- THE START OF OUR USE OF THE WIX INSTALLER.         -->
+  <!--                                                    -->
+  <!-- I changed the UPGRADE CODE with 3.3.1 over 3.3.0   -->
+  <!-- (and before) because 3.3.0 did a blended install   -->
+  <!-- with a single 32-bit EXE and *EITHER* the 32-bit   -->
+  <!-- or 64-bit DLL (both sharing the same DLL GUIDs).   -->
+  <!-- With 3.3.1 and the push to make both versions be   -->
+  <!-- independent, I gave each unique DLL GUIDs and      -->
+  <!-- UPGRADE CODES.                                     -->
+  <!--                                                    -->
+  <!-- So 3.3.1 is essentially a product FORK.            -->
+
+  <?if $(sys.BUILDARCH) = "x64" ?>
+  <?define GUID_ProductUpgradeCode = "{D0CD854C-D17C-4651-9004-1AB37783DAEF}" ?>
+  <?else ?>
+  <?define GUID_ProductUpgradeCode = "{378091DE-4ED8-478C-AADA-DF958DE54E46}" ?>
+  <?endif ?>
+
+  <!-- The 3.3.0 and earlier versions of DiffMerge used   -->
+  <!-- "Advanced Installer" and had this UPGRADE CODE.    -->
+
+  <?define GUID_OLD_ProductUpgradeCode_330 = "{23173CB6-EAD6-4B4A-9553-F5BB9D46BD70}" ?>
+
+</Include>

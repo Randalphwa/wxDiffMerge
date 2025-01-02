@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>DiffMerge</string>
+	<key>CFBundleIconFile</key>
+	<string>DiffMergeIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.sourcegear.DiffMerge6</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>DiffMerge</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>@MAJOR@.@MINOR@.@REVISION@</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>@MAJOR@.@MINOR@.@REVISION@.@BUILDNUM@</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright (C) @COPYRIGHTDATE@ SourceGear LLC. All Rights Reserved.</string>
+	<key>NSPrincipalClass</key>
+	<string>wxNSApplication</string>
+
+	<key>LSArchitecturePriority</key>
+    <array>
+	<string>@ARCH@</string>
+    </array>
+	<key>LSRequiresNativeExecution</key>
+    <true/>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.developer-tools</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.10</string>
+
+	<!-- This gets us into Finder's "Open with ->" context menu -->
+	<!-- when you right-click on an file with a known suffix.   -->
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+		  <key>CFBundleTypeIconFile</key>
+		  <string>DiffMergeIcon</string>
+		  <key>CFBundleTypeRole</key>
+		  <string>Editor</string>
+		  <key>LSItemContentTypes</key>
+		  <array>
+		    <string>public.plain-text</string>
+		    <string>public.html</string>
+		    <string>public.xml</string>
+		    <string>public.source-code</string>
+		    <string>public.script</string>
+		  </array>
+		</dict>
+
+		<!-- I don't want to include "*" because then we -->
+		<!-- pick up images and binary files.            -->
+		<!-- Uncomment this block if you want.
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>*</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>All</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>****</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+		-->
+	</array>
+
+	<!-- This gets us on the "Finder | Services ->" menu in the -->
+	<!-- "Files and Folders" group.  It also gets us at the     -->
+	<!-- bottom Finder's context menu when you right-click on   -->
+	<!-- one or more items.                                     -->
+	<!-- I'm using NSSendTypes rather than NSSendFileTypes      -->
+	<!-- so that we get directories and so that we appear with  -->
+	<!-- "Files and Folders" rather than with "Text" grouping.  -->
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Open in DiffMerge</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>openFilesViaService</string>
+			<key>NSUserData</key>
+			<string>SGDM</string>
+			<key>NSPortName</key>
+			<string>DiffMerge</string>
+			<key>NSRequiredContext</key>
+			<dict>
+				<key>NSTextContent</key>
+				<string>FilePath</string>
+			</dict>
+			<!--
+			<key>NSSendFileTypes</key>
+			<array>
+			  <string>public.plain-text</string>
+			  <string>public.html</string>
+			  <string>public.xml</string>
+			  <string>public.source-code</string>
+			  <string>public.script</string>
+			  <string>public.directory</string>
+			</array>
+			-->
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+
+			<key>NSReturnTypes</key>
+			<array/>
+		</dict>
+	</array>
+
+</dict>
+</plist>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="$(var.dir_DiffMergeNative)">
+
+      <Directory Id="dir_MoreFromSourceGear" Name="MoreFromSourceGear">
+
+	<!-- 2013/05/15 With the 4.0.0 (first nagging/license) release
+                        we no longer distribute local copies of the
+			MoreFromSourceGear content.  Rather, we just
+			link to a webpage on our server. 
+			
+			So I'm going to put RemoveFile/RemoveFolder
+			actions in here to clean up the liter from
+			any previous installations.
+	-->
+
+        <Component
+	   Id="cmpEEBEBE3EB9A6B2D0A2A4170E53C74B55"
+	   Guid="$(var.GUID_More__index_html)"
+	   Win64="$(var.Is64)">
+
+          <RemoveFile
+	     Id="fil5CCB16F75B713E84B1E43FA0E802DE65"
+	     Name="[dir_MoreFromSourceGear]index.html"
+	     On="both" />
+        </Component>
+
+        <Component
+	   Id="cmp56C8CECAD5EE6EF48E9DA23E32E39994"
+	   Guid="$(var.GUID_More__sgbg_png)"
+	   Win64="$(var.Is64)">
+
+          <RemoveFile
+	     Id="fil0FE6346E513CE9E6661A9BDA38BBB61E"
+	     Name="[dir_MoreFromSourceGear]sgbg.png"
+	     On="both" />
+        </Component>
+
+        <Component
+	   Id="cmpA49ADC1D8A980B15B25C4040A2FE3A58"
+	   Guid="$(var.GUID_More__topleftlogo_gif)"
+	   Win64="$(var.Is64)">
+
+          <RemoveFile
+	     Id="filB583FEC08E7AAA4A65C606E0BC4C3443"
+	     Name="[dir_MoreFromSourceGear]SGtopleftlogo2.gif"
+	     On="both" />
+        </Component>
+
+        <Component
+	   Id="cmp85BF0160F1C10060B8BDD437FD3F8127"
+	   Guid="$(var.GUID_More__vaultpro75_png)"
+	   Win64="$(var.Is64)">
+
+          <RemoveFile
+	     Id="fil504328F59F3C8B45B0BEFDE66691A9A3"
+	     Name="[dir_MoreFromSourceGear]VaultPro75.png"
+	     On="both" />
+        </Component>
+
+        <Component
+	   Id="cmpE954CF369ED8425DCC57E2474B19A3DF"
+	   Guid="$(var.GUID_More__vaultstnd75_png)"
+	   Win64="$(var.Is64)">
+
+          <RemoveFile
+	     Id="filEB1BEB79A0EE8C77480D81520F065C66"
+	     Name="[dir_MoreFromSourceGear]VaultStnd75.png"
+	     On="both" />
+        </Component>
+
+        <Component
+	   Id="cmp590CFD607DC49FFB418C8D6A3A1276B0"
+	   Guid="$(var.GUID_More__veracity150_png)"
+	   Win64="$(var.Is64)">
+
+	  <RemoveFile
+	      Id="fil9E39A27824F25C7DCE8E5B9AB600FA7D"
+	      Name="[dir_MoreFromSourceGear]veracity150.png"
+	      On="both" />
+        </Component>
+
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__MoreFromSourceGear">
+
+      <ComponentRef Id="cmpEEBEBE3EB9A6B2D0A2A4170E53C74B55" />
+      <ComponentRef Id="cmp56C8CECAD5EE6EF48E9DA23E32E39994" />
+      <ComponentRef Id="cmpA49ADC1D8A980B15B25C4040A2FE3A58" />
+      <ComponentRef Id="cmp85BF0160F1C10060B8BDD437FD3F8127" />
+      <ComponentRef Id="cmpE954CF369ED8425DCC57E2474B19A3DF" />
+      <ComponentRef Id="cmp590CFD607DC49FFB418C8D6A3A1276B0" />
+
+    </ComponentGroup>
+  </Fragment>
+</Wix>
+

@@ -1,0 +1,37 @@
+## Makefile, GNU Makefile for sgdm3 for Linux.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix
+MY_EXEDEPS=	Makefile.Unix
+
+include ../Config/Config.inc
+include ../de/de.inc
+include ../fl/fl.inc
+include ../fs/fs.inc
+include ../fd/fd.inc
+include ../poi/poi.inc
+include ../fim/fim.inc
+include ../rs/rs.inc
+include ../xt/xt.inc
+include ../util/util.inc	## must be last library (keeps loader happy)
+
+include ../gui/gui.inc
+
+##################################################################
+
+SRCS=		$(GUI_SRCS)
+
+##################################################################
+
+include ../Config/ConfigExecutable.inc
+
+##################################################################
+## make run -- will run the application.
+
+RUNARGS=
+
+run:	$(TARGET)
+	$(TARGET) $(RUNARGS)
+

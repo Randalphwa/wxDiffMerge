@@ -1,0 +1,22 @@
+## Makefile_keygen.Unix
+## GNU Makefile to build stand-alone license keygen tool.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix Makefile_keygen.Unix
+MY_LIBDEPS=	Makefile.Unix Makefile_keygen.Unix
+
+include ../Config/Config.inc
+include ../key/key.inc
+
+##################################################################
+## We only need to list the main program.  We don't need
+## to include $(KEY_SRCS) because we will be linking with
+## libsgdm_key.a and it should already exist.
+
+SRCS=		sgdm_keygen.cpp
+
+##################################################################
+
+include ../Config/ConfigKeygen.inc

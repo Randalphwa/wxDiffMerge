@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010-2011 SourceGear, LLC
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?include inc__msi_other_guids.wxi ?>
+  <?include inc__msi_product_guids.wxi ?>
+  <?include inc__msi_upgrade_guids.wxi ?>
+  <?include inc__variables.wxi ?>
+
+  <Product
+     Id="$(var.GUID_ProductCode)"
+     Name="SourceGear DiffMerge $(var.BUILD_VERSION) ($(var.ARCH_PACKAGE))"
+     Language="1033"
+     Version="$(var.Version)"
+     Manufacturer="SourceGear, LLC"
+     UpgradeCode="$(var.GUID_ProductUpgradeCode)">
+
+    <?include inc__package.wxi ?>
+
+    <Condition Message="DiffMerge requires Windows XP SP3 or later.">
+      <![CDATA[(Installed OR (VersionNT = 501 AND ServicePackLevel >= 3) OR (VersionNT >= 502))]]>
+    </Condition>
+    
+    <?if $(sys.BUILDARCH) = "x64" ?>
+    <Condition Message="This is the 64-bit installer. The 64-bit version of DiffMerge supports only 64-bit Windows Vista and later.">
+      <![CDATA[(Installed OR (VersionNT64 >= 600))]]>
+    </Condition>
+    <?else ?>
+    <!-- I'm going to prevent the 32-bit installer from running on 64-bit Windows.
+	 The 32-bit EXE and 32-bit DLL work just fine, but the 32-bit installer
+	 does not install the 64-bit DLL and this will lead to disappointment.
+	 And since the 64-bit installer installs BOTH DLLs, if we allowed both
+	 packages to be installed, we would have an issue with 2 different packages
+	 installing the same file (the 32-bit DLL) and that is frowned upon. -->
+    <Condition Message="This is a 32-bit installer.  Please use the 64-bit installer.">NOT VersionNT64</Condition>
+    <?endif ?>
+
+    <!-- Because of the situation described in upgrade_constants.wxi, I   -->
+    <!-- cannot use <MajorUpgrade> to do all of the dirty work.  Rather,  -->
+    <!-- I need to explicitly declare the upgrade relations for the new   -->
+    <!-- 3.3.1-and-beyond upgrade code to that I can also add a table     -->
+    <!-- entry for the 3.3.0 code.  It looks like <MajorUpgrade> can only -->
+    <!-- build the table using the current upgrade code.                  -->
+
+    <Upgrade Id="$(var.GUID_OLD_ProductUpgradeCode_330)">
+
+      <!-- Declare any (X.Y.Z) installed version of the product using the   -->
+      <!-- OLD UPGRADE CODE to be RELATED TO US and let this relationship   -->
+      <!-- be named "OLD_PRODUCT_330".                                      -->
+
+      <UpgradeVersion
+	 Minimum="0.0.0"
+	 IncludeMinimum="yes"
+	 IgnoreRemoveFailure="no"
+	 OnlyDetect="no"
+	 Property="OLD_PRODUCT_330" />
+
+    </Upgrade>
+
+    <Upgrade Id="$(var.GUID_ProductUpgradeCode)">
+
+      <!-- Declare named relationships for this product with older/newer    -->
+      <!-- versions of itself.                                              -->
+
+      <UpgradeVersion
+	 Minimum="$(var.Version3)"
+	 OnlyDetect="yes"
+	 IncludeMinimum="no"
+	 Property="NEWER_VERSION_OF_THIS_PRODUCT" />
+
+      <UpgradeVersion
+	 Minimum="0.0.0"
+	 IncludeMinimum="yes"
+	 Maximum="$(var.Version3)"
+	 IncludeMaximum="no"
+	 IgnoreRemoveFailure="no"
+	 Property="UPGRADE_THIS_PRODUCT" />
+
+    </Upgrade>
+
+    <Media Id="1" Cabinet="diffmerge.cab" EmbedCab="yes" />
+
+    <?include inc__property_arp.wxi ?>
+    <?include inc__WixUI.wxi ?>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <?if $(sys.BUILDARCH) = "x64" ?>
+      <?include inc__directory_target64.wxi ?>
+      <?else?>
+      <?include inc__directory_target32.wxi ?>
+      <?endif?>
+    
+      <Directory Id="DesktopFolder" />
+
+      <!-- We put the Merge Module here directly under TARGETDIR 
+	   (rather than under APPLICATIONFOLDER) because it does
+	   not reference APPLICATIONFOLDER, rather it puts things
+	   in a shared "common" directory.  This is also required
+	   because the 64-bit MSM installs both 64- and 32-bit DLLs
+	   and cannot be dependent upon the MSI's 64-bit APPLICATIONFOLDER. -->
+      <Merge
+	 Id="MSM_DiffMerge"
+	 Language="1033" 
+	 SourceFile="$(var.SrcRoot)\DiffMerge_$(var.BUILD_VERSION)_$(var.ARCH_PACKAGE).msm"
+	 DiskId="1" />
+
+    </Directory>
+
+    <?include inc__custom_actions.wxi ?>
+
+    <Feature 
+       Id="feature_Complete"
+       Title="DiffMerge $(var.BUILD_VERSION) ($(var.ARCH_PACKAGE))"
+       Description="Everything"
+       Display="expand"
+       AllowAdvertise="no"
+       Absent="disallow"
+       Level="1" >
+
+      <MergeRef Id="MSM_DiffMerge" />
+
+      <ComponentGroupRef Id="frag__cg__README_txt" />
+      <ComponentGroupRef Id="frag__cg__DesktopFolder" />
+
+    </Feature>
+
+  </Product>
+</Wix>

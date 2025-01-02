@@ -1,0 +1,120 @@
+## Makefile
+##################################################################
+
+include Config.inc
+
+##################################################################
+
+ifeq ($(ARCH),amd64)
+XX_SLN_PLATFORM:=x64
+else ifeq ($(ARCH),i686)
+XX_SLN_PLATFORM:=Win32
+else
+$(error Unknown ARCH for XX_SLN_PLATFORM. ARCH is $(ARCH))
+endif
+
+##################################################################
+
+ifeq ($(strip $(BUILD_BUILDLABEL)),)
+DOT_BUILDLABEL:=
+else
+DOT_BUILDLABEL:=.$(BUILD_BUILDLABEL)
+endif
+
+##################################################################
+
+default:	Config.inc Config.$(OS_NAME).inc do_echo $(OBJDIR)/GEN_ConfigFeatures.h $(OBJDIR)/GEN_BuildNumber.h do_build_using_sln do_installers
+
+do_echo:
+	@echo Config is $(MODE)
+	@echo BUILD_DOS root is $(BUILD_DOS)
+	@echo BUILD_CYG root is $(BUILD_CYG)
+	@echo BUILD version is $(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)$(DOT_BUILDLABEL)
+	@echo BUILD CSID is $(BUILD_CSID)
+	@echo BUILD copyright is $(BUILD_COPYRIGHTDATE)
+	@echo ARCH is $(ARCH)
+	@echo ARCH_PACKAGE is $(ARCH_PACKAGE)
+	@echo FLAVOR is $(FLAVOR)
+	@echo FLAVOR_ARCH is $(FLAVOR_ARCH)
+	@echo ENABLED_FEATURES is $(ENABLED_FEATURES)
+	@echo DISABLED_FEATURES is $(DISABLED_FEATURES)
+	@echo OBJDIR is $(OBJDIR)
+	@echo WXWIDGETS_TOP is $(WXWIDGETS_TOP)
+	@echo WXWIDGETS_INCLUDE is $(WXWIDGETS_INCLUDE)
+	@echo WXWIDGETS_LIB is $(WXWIDGETS_LIB)
+	@echo WXWIDGETS_LIB_INCLUDE is $(WXWIDGETS_LIB_INCLUDE)
+
+## TODO 2013/05/01 The following was using /rebuild for some reason
+## TODO            which causes the entire tree to recompile each
+## TODO            time you type make.
+## TODO
+## TODO            I changed it to /build for now.
+
+do_build_using_sln:
+	( export DIFFMERGE_BUILD_ROOT=$(BUILD_DOS)/$(MY_DIR); \
+	  export WXWIDGETS_TOP=$(WXWIDGETS_TOP); \
+	  export WXWIDGETS_INCLUDE=$(WXWIDGETS_INCLUDE); \
+	  export WXWIDGETS_LIB=$(WXWIDGETS_LIB); \
+	  export WXWIDGETS_LIB_INCLUDE=$(WXWIDGETS_LIB_INCLUDE); \
+	  export FLAVOR=$(FLAVOR); \
+	  export FLAVOR_ARCH=$(FLAVOR_ARCH); \
+	  cd ..; \
+	  #cmd.exe /c "wsl_devenv_build_diffmerge.bat $(MODE) $(XX_SLN_PLATFORM) $(MIN_TARGET_OS)"; \
+	  devenv.com DiffMerge_vs2019.sln -build "$(MODE)|$(XX_SLN_PLATFORM)"; \
+	)
+
+do_installers:
+	$(MAKE) -C ../Installers/Windows -f Makefile.Windows \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				FLAVOR=$(FLAVOR) \
+				FLAVOR_ARCH=$(FLAVOR_ARCH) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_CSID=$(BUILD_CSID) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				default
+
+##################################################################
+
+report_outputs:
+	@$(MAKE) -C ../Installers/Windows -f Makefile.Windows --no-print-directory \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				FLAVOR=$(FLAVOR) \
+				FLAVOR_ARCH=$(FLAVOR_ARCH) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_CSID=$(BUILD_CSID) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				report_outputs
+
+##################################################################
+
+include ../Config/ConfigFeatures.inc
+
+##################################################################
+
+include ../Config/ConfigBuildNumber.inc
+
+##################################################################
+
+clean:
+	@echo TODO Fix clean target in Config/Makefile.Windows
+

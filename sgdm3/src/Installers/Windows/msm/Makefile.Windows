@@ -1,0 +1,248 @@
+## Makefile, GNU Makefile to build MSM Merge Module for Windows using WIX.
+##################################################################
+
+BUILD_DOS:=C:/build/sgdm
+BUILD_CYG:=/cygdrive/c/build/sgdm
+
+OS_NAME:=Windows
+
+MODE:=Release
+
+BUILD_MAJOR:=4
+BUILD_MINOR:=2
+BUILD_REVISION:=0
+BUILD_BUILDNUM:=0
+BUILD_BUILDLABEL:=
+BUILD_COPYRIGHTDATE:=2003-$(shell date +"%Y")
+
+## set ARCH, ARCH_PACKAGE
+include ../../../config/Arch.Windows.inc
+
+##################################################################
+
+ifeq ($(strip $(BUILD_BUILDLABEL)),)
+DOT_BUILDLABEL:=
+UNDER_BUILDLABEL:=
+else
+DOT_BUILDLABEL:=.$(BUILD_BUILDLABEL)
+UNDER_BUILDLABEL:=_$(BUILD_BUILDLABEL)
+endif
+
+BUILD_VERSION:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)$(DOT_BUILDLABEL)
+
+VERSION:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)
+VERSION3:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION)
+
+##################################################################
+
+ZIPDIR_NAME:=DiffMerge_$(BUILD_MAJOR)_$(BUILD_MINOR)_$(BUILD_REVISION)_$(BUILD_BUILDNUM)$(UNDER_BUILDLABEL)_$(ARCH_PACKAGE)
+MSM_NAME:=DiffMerge_$(BUILD_VERSION)_$(ARCH_PACKAGE).msm
+
+TMPDIR_DOS:=$(BUILD_DOS)/$(OS_NAME)/$(ARCH)/$(MODE)/tmp/$(BUILD_VERSION)
+TMPDIR_CYG:=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)/tmp/$(BUILD_VERSION)
+
+BUILD_BINDIR_DOS:=$(TMPDIR_DOS)/bin
+BUILD_BINDIR_CYG:=$(TMPDIR_CYG)/bin
+
+ZIPDIR_DOS:=$(TMPDIR_DOS)/$(ZIPDIR_NAME)
+ZIPDIR_CYG:=$(TMPDIR_CYG)/$(ZIPDIR_NAME)
+
+WIXROOT_DOS:=$(TMPDIR_DOS)/wix_msm
+WIXROOT_CYG:=$(TMPDIR_CYG)/wix_msm
+
+RESULT_DIR_DOS:=$(BUILD_DOS)/$(OS_NAME)/$(ARCH)/$(MODE)
+RESULT_DIR_CYG:=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)
+
+RESULT_ZIP_CYG:=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)/$(ZIPDIR_NAME).zip
+
+##################################################################
+
+HEAT:=	heat.exe
+CANDLE:= candle.exe
+LIGHT:=	light.exe
+
+##################################################################
+
+WXI:=	inc__custom_actions.wxi				\
+	inc__directory_target32.wxi			\
+	inc__directory_target64.wxi			\
+	inc__msm_guids.wxi				\
+	inc__variables.wxi
+
+ifeq ($(ARCH_PACKAGE),x64)
+SHEXDLL:=SourceGearDiffMergeShellExtension64.dll
+SHEX64DLL:=SourceGearDiffMergeShellExtension64.dll
+LIST_SHEX_WXS:=		frag__cg__ShellExtension64_dll.wxs
+LIST_SHEX_WIXOBJ:=	$(WIXROOT_DOS)/obj/frag__cg__ShellExtension64_dll.wixobj
+DIR_NATIVE:=dir_DiffMerge64
+else if eq ($(ARCH_PACKAGE),x86)
+SHEXDLL:=SourceGearDiffMergeShellExtension32.dll
+SHEX32DLL:=SourceGearDiffMergeShellExtension32.dll
+LIST_SHEX_WXS:=		frag__cg__ShellExtension32_dll.wxs
+LIST_SHEX_WIXOBJ:=	$(WIXROOT_DOS)/obj/frag__cg__ShellExtension32_dll.wixobj
+DIR_NATIVE:=dir_DiffMerge32
+else
+$(error Unknown value for ARCH_PACKAGE : "$(ARCH_PACKAGE)")
+endif
+
+CANDLEARGS:=	-nologo \
+		-arch $(ARCH_PACKAGE) \
+		-dLayoutRoot=$(ZIPDIR_DOS) \
+		-ddir_DiffMergeNative=$(DIR_NATIVE) \
+		-dShellExtensionDLL=$(ZIPDIR_DOS)/$(SHEXDLL) \
+		-dSrcRoot=$(WIXROOT_DOS)/src \
+		-dARCH_PACKAGE=$(ARCH_PACKAGE) \
+		-dBUILD_VERSION=$(BUILD_VERSION) \
+		-dVersion=$(VERSION) \
+		-dVersion3=$(VERSION3)
+
+WXS:=	main.wxs					\
+	frag__cg__DiffMerge_exe.wxs			\
+	frag__cg__DiffMergeManual_pdf.wxs		\
+	frag__cg__License_html.wxs			\
+	frag__cg__License_rtf.wxs			\
+	frag__cg__MoreFromSourceGear.wxs		\
+	frag__cg__ProgramMenuFolder.wxs			\
+	frag__cg__set_PATH.wxs				\
+	frag__cg__sgdm_cygwin_sh.wxs			\
+	$(LIST_SHEX_WXS)
+
+##################################################################
+
+default:	do_zip do_msm
+
+
+do_zip:
+	@if [ -d $(ZIPDIR_CYG) ]; then \
+	     chmod --verbose --recursive 777 $(ZIPDIR_CYG); \
+	     rm -rf $(ZIPDIR_CYG); \
+	 fi
+	@mkdir -p $(ZIPDIR_CYG)
+	@#
+	@echo Create and populate root directory for building ZIP file....
+	@#
+	@# Copy everything that we want in the ZIP file into $(ZIPDIR_CYG)
+	@# and arrange it as we want it to appear.  This allows us to 
+	@# rename/normalize any filenames from how we store them in our tree.
+	@#
+	@cp    ../../DiffMergeManual.pdf                 $(ZIPDIR_CYG)/DiffMerge.pdf
+	@cp    ../../sgdm3_license.rtf                   $(ZIPDIR_CYG)/License.rtf
+	@#
+	@# The 3.3.* version of this MSM installed both the RTF and HTML
+	@# versions of the license text.  I'd like to remove the HTML version
+	@# and just maintain the RTF version (which is used in screen 2 in
+	@# the various platform installers).  But if they also installed
+	@# Veracity 2.5(which uses the 3.3.2 MSM too) the system thinks
+	@# there is a dependency and refuses to delete this file.  The
+	@# remove-file stuff works fine if we just do DiffMerge 3.3.2 to
+	@# DiffMerge 4.0.0, but not when Veracity is involved.
+	@# So replace the content with a "see the manual" page rather
+	@# than deleting it.
+	@#
+	@cp    ../../Windows.Stub.License.html            $(ZIPDIR_CYG)/License.html
+	@#
+	@cat ../../Windows.Cygwin.sh				\
+	| sed 's|@MAJOR@|$(BUILD_MAJOR)|'			\
+	| sed 's|@MINOR@|$(BUILD_MINOR)|'			\
+	| sed 's|@REVISION@|$(BUILD_REVISION)|'			\
+	| sed 's|@BUILDNUM@|$(BUILD_BUILDNUM)|'			\
+	| sed 's|@COPYRIGHTDATE@|$(BUILD_COPYRIGHTDATE)|'	\
+	| sed 's|@BUILDLABEL@|$(BUILD_BUILDLABEL)|'		\
+	> $(ZIPDIR_CYG)/sgdm_cygwin.sh
+	@#
+	@# This may be questionable, but MSVS 10 has a program named diffmerge.exe in
+	@# .../Common7/IDE.  If the user elects to have us add the DiffMerge install
+	@# directory to their path (which we do at the end), we still lose.  (If we
+	@# prepend it, we may mess up MSVS or TFS.)
+	@#
+	@cp    $(BUILD_BINDIR_CYG)/DiffMerge.exe         $(ZIPDIR_CYG)/sgdm.exe
+ifeq ($(ARCH_PACKAGE),x64)
+	@cp    $(BUILD_BINDIR_CYG)/$(SHEX64DLL)          $(ZIPDIR_CYG)/$(SHEX64DLL)
+else if eq ($(ARCH_PACKAGE),x86)
+	@cp    $(BUILD_BINDIR_CYG)/$(SHEX32DLL)          $(ZIPDIR_CYG)/$(SHEX32DLL)
+else
+$(error Unknown value for ARCH_PACKAGE : "$(ARCH_PACKAGE)")
+endif
+	@# For some stupid reason the latest version of cygwin's "cp" command
+	@# copies files over and gives them an ACL that makes them look like
+	@# they have a "chmod 000", which causes the "zip" command to fail.
+	@#
+	@echo Fixing permissions before zipping...
+	@chmod --verbose --recursive 777 $(ZIPDIR_CYG)
+	@#
+	@echo Creating ZIP file....
+	@(cd $(ZIPDIR_CYG)/..; 7z a $(RESULT_ZIP_CYG) ./$(ZIPDIR_NAME))
+
+do_msm:
+	@if [ -d $(WIXROOT_CYG) ]; then rm -rf $(WIXROOT_CYG); fi
+	@mkdir -p $(WIXROOT_CYG)
+	@#
+	@echo Use the ZIP source directory as the layout directory....
+	@echo Create the WIX SRC directory....
+	@#
+	@mkdir -p $(WIXROOT_CYG)/src
+	@#
+	@# Copy all of the hand-written WIX XML source files and the various
+	@# installer artwork.  We need these to compile the installer, only.
+	@# We do not need to acutally install them on the target computer.
+	@#
+	@for k in $(WXI); do cp ./$$k $(WIXROOT_CYG)/src; done
+	@for k in $(WXS); do cp ./$$k $(WIXROOT_CYG)/src; done
+	@#
+	@# For some stupid reason the latest version of cygwin's "cp" command
+	@# copies files over and gives them an ACL that makes them look like
+	@# they have a "chmod 000", which causes anthing that uses them to fail.
+	@#
+	@echo Fixing permissions before running WIX...
+	@chmod --verbose --recursive 777 $(WIXROOT_CYG)/src
+	@#
+	@echo Create the WIX OBJ directory....
+	@#
+	@mkdir -p $(WIXROOT_CYG)/obj
+	@#
+	@echo Compile WIX XML source files/fragments into object code....
+	@#
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__DiffMerge_exe.wxs       $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__DiffMerge_exe.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__DiffMergeManual_pdf.wxs $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__DiffMergeManual_pdf.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__License_html.wxs        $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__License_html.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__License_rtf.wxs         $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__License_rtf.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__MoreFromSourceGear.wxs  $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__MoreFromSourceGear.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__ProgramMenuFolder.wxs   $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__ProgramMenuFolder.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__set_PATH.wxs            $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__set_PATH.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__sgdm_cygwin_sh.wxs      $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__sgdm_cygwin_sh.wixobj
+ifeq ($(ARCH_PACKAGE),x64)
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__ShellExtension64_dll.wxs   $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__ShellExtension64_dll.wixobj
+else if eq ($(ARCH_PACKAGE),x86)
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__ShellExtension32_dll.wxs   $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__ShellExtension32_dll.wixobj
+else
+$(error Unknown value for ARCH_PACKAGE : "$(ARCH_PACKAGE)")
+endif
+	@$(CANDLE) $(WIXROOT_DOS)/src/main.wxs                          $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/main.wixobj
+	@#
+	@echo Create the WIX BIN directory....
+	@#
+	@mkdir -p $(WIXROOT_CYG)/bin
+	@#
+	@echo Link all of the compiled WIX object files into an MSM Merge Module....
+	@#
+	@# We do this into .../wix/bin and then move it to the
+	@# final destination because LIGHT also creates other trash.
+	@#
+	@$(LIGHT) -nologo \
+		$(WIXROOT_DOS)/obj/main.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__DiffMerge_exe.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__DiffMergeManual_pdf.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__License_html.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__License_rtf.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__MoreFromSourceGear.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__ProgramMenuFolder.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__set_PATH.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__sgdm_cygwin_sh.wixobj \
+		$(LIST_SHEX_WIXOBJ) \
+		-cultures:en-us \
+		-out $(WIXROOT_DOS)/bin/$(MSM_NAME)
+	@mv $(WIXROOT_CYG)/bin/$(MSM_NAME) $(RESULT_DIR_CYG)/$(MSM_NAME)
+
+report_outputs:
+	@echo $(RESULT_DIR_CYG)/$(MSM_NAME)
+	@echo $(RESULT_ZIP_CYG)

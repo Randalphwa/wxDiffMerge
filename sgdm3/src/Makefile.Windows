@@ -1,0 +1,116 @@
+## Makefile, GNU Makefile for sgdm3 for Windows
+##################################################################
+
+BUILD_DOS:=C:/build/sgdm400
+BUILD_CYG:=/cygdrive/c/build/sgdm400
+
+OS_NAME:=Windows
+
+MODE:=Release
+####MODE:=Debug
+
+BUILD_MAJOR:=4
+BUILD_MINOR:=2
+BUILD_REVISION:=0
+BUILD_BUILDNUM:=0
+BUILD_BUILDLABEL:=unstable
+BUILD_CSID:=undefined
+
+BUILD_COPYRIGHTDATE:=2003-$(shell date +"%Y")
+
+## set FLAVOR, ARCH, ARCH_PACKAGE
+include Config/Arch.Windows.inc
+
+##################################################################
+
+ifeq ($(strip $(BUILD_BUILDLABEL)),)
+DOT_BUILDLABEL:=
+else
+DOT_BUILDLABEL:=.$(BUILD_BUILDLABEL)
+endif
+
+BUILD_VERSION:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)$(DOT_BUILDLABEL)
+
+##################################################################
+
+WXWIDGETS_VERSION:=3.2.6
+
+##################################################################
+## we use a private build of wxWidgets that was built by ../thirdparty.
+## Only it knows what wxWidgets version we are using and where it placed
+## the actual binaries.
+
+WXWIDGETS_TOP:=$(shell         $(MAKE) -C ../thirdparty -f Makefile.Windows --no-print-directory MODE=$(MODE) ARCH=$(ARCH) WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) _wx_top)
+WXWIDGETS_INCLUDE:=$(shell     $(MAKE) -C ../thirdparty -f Makefile.Windows --no-print-directory MODE=$(MODE) ARCH=$(ARCH) WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) _wx_include)
+WXWIDGETS_LIB:=$(shell         $(MAKE) -C ../thirdparty -f Makefile.Windows --no-print-directory MODE=$(MODE) ARCH=$(ARCH) WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) _wx_lib)
+WXWIDGETS_LIB_INCLUDE:=$(shell $(MAKE) -C ../thirdparty -f Makefile.Windows --no-print-directory MODE=$(MODE) ARCH=$(ARCH) WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) _wx_lib_include)
+
+##################################################################
+## select optional features (a space separated list of feature symbols)
+## THESE FEATURES ARE NOW PERMANENTLY ENABLED.
+
+ENABLED_FEATURES:=	"FEATURE_BATCHOUTPUT"
+DISABLED_FEATURES:=	""
+
+##################################################################
+## Because we use the .sln to do the compiles we only need to
+## do the sub-make on ./Config.  It also takes care of optionally
+## packaging the results into installers.  So we don't need the
+## DIRS=
+## line.
+##################################################################
+
+default:
+	@date
+	$(MAKE) -C Config -f Makefile.Windows \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				FLAVOR=$(FLAVOR) \
+				FLAVOR_ARCH=$(FLAVOR_ARCH) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) \
+				WXWIDGETS_TOP=$(WXWIDGETS_TOP) \
+				WXWIDGETS_INCLUDE=$(WXWIDGETS_INCLUDE) \
+				WXWIDGETS_LIB=$(WXWIDGETS_LIB) \
+				WXWIDGETS_LIB_INCLUDE=$(WXWIDGETS_LIB_INCLUDE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_CSID=$(BUILD_CSID) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				ENABLED_FEATURES=$(ENABLED_FEATURES) \
+				DISABLED_FEATURES=$(DISABLED_FEATURES) \
+				default
+
+report_outputs:
+	@$(MAKE) -C Config -f Makefile.Windows --no-print-directory \
+				BUILD_DOS=$(BUILD_DOS) \
+				BUILD_CYG=$(BUILD_CYG) \
+				OS_NAME=$(OS_NAME) \
+				FLAVOR=$(FLAVOR) \
+				FLAVOR_ARCH=$(FLAVOR_ARCH) \
+				MODE=$(MODE) \
+				ARCH=$(ARCH) \
+				ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				WXWIDGETS_VERSION=$(WXWIDGETS_VERSION) \
+				WXWIDGETS_TOP=$(WXWIDGETS_TOP) \
+				WXWIDGETS_INCLUDE=$(WXWIDGETS_INCLUDE) \
+				WXWIDGETS_LIB=$(WXWIDGETS_LIB) \
+				WXWIDGETS_LIB_INCLUDE=$(WXWIDGETS_LIB_INCLUDE) \
+				BUILD_MAJOR=$(BUILD_MAJOR) \
+				BUILD_MINOR=$(BUILD_MINOR) \
+				BUILD_REVISION=$(BUILD_REVISION) \
+				BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) \
+				BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) \
+				BUILD_CSID=$(BUILD_CSID) \
+				BUILD_VERSION=$(BUILD_VERSION) \
+				ENABLED_FEATURES=$(ENABLED_FEATURES) \
+				DISABLED_FEATURES=$(DISABLED_FEATURES) \
+				report_outputs

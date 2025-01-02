@@ -1,0 +1,159 @@
+## Makefile, GNU Makefile to build MSI installers for Windows using WIX.
+##################################################################
+
+BUILD_DOS:=C:/build/sgdm
+BUILD_CYG:=/cygdrive/c/build/sgdm
+
+OS_NAME:=Windows
+
+MODE:=Release
+
+BUILD_MAJOR:=4
+BUILD_MINOR:=2
+BUILD_REVISION:=0
+BUILD_BUILDNUM:=0
+BUILD_BUILDLABEL:=
+BUILD_COPYRIGHTDATE:=2003-$(shell date +"%Y")
+
+## set ARCH, ARCH_PACKAGE
+include ../../../config/Arch.Windows.inc
+
+##################################################################
+
+ifeq ($(strip $(BUILD_BUILDLABEL)),)
+DOT_BUILDLABEL:=
+else
+DOT_BUILDLABEL:=.$(BUILD_BUILDLABEL)
+endif
+
+BUILD_VERSION:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)$(DOT_BUILDLABEL)
+
+VERSION:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)
+VERSION3:=$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION)
+
+##################################################################
+
+BUILD_BINDIR_DOS:=$(BUILD_DOS)/$(OS_NAME)/$(ARCH)/$(MODE)/tmp/$(BUILD_VERSION)/bin
+BUILD_BINDIR_CYG:=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)/tmp/$(BUILD_VERSION)/bin
+
+WIXROOT_DOS:=$(BUILD_DOS)/$(OS_NAME)/$(ARCH)/$(MODE)/tmp/$(BUILD_VERSION)/wix/msi
+WIXROOT_CYG:=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)/tmp/$(BUILD_VERSION)/wix/msi
+
+MSI_NAME:=DiffMerge_$(BUILD_VERSION)_$(ARCH_PACKAGE).msi
+MSM_NAME:=DiffMerge_$(BUILD_VERSION)_$(ARCH_PACKAGE).msm
+
+FINAL_MSIDIR_DOS:=$(BUILD_DOS)/$(OS_NAME)/$(ARCH)/$(MODE)
+FINAL_MSIDIR_CYG:=$(BUILD_CYG)/$(OS_NAME)/$(ARCH)/$(MODE)
+
+##################################################################
+
+
+#### HEAT:=	/cygdrive/c/Program\ Files\ \(x86\)/Windows\ Installer\ XML\ v3.5/bin/heat.exe
+#### CANDLE:=/cygdrive/c/Program\ Files\ \(x86\)/Windows\ Installer\ XML\ v3.5/bin/candle.exe
+#### LIGHT:=	/cygdrive/c/Program\ Files\ \(x86\)/Windows\ Installer\ XML\ v3.5/bin/light.exe
+
+HEAT:= heat.exe
+CANDLE:= candle.exe
+LIGHT:=	light.exe
+
+WXI:=	inc__WixUI.wxi					\
+	inc__custom_actions.wxi				\
+	inc__directory_target32.wxi			\
+	inc__directory_target64.wxi			\
+	inc__msi_other_guids.wxi			\
+	inc__msi_product_guids.wxi			\
+	inc__msi_upgrade_guids.wxi			\
+	inc__package.wxi				\
+	inc__property_arp.wxi				\
+	inc__variables.wxi
+
+CANDLEARGS:=	-nologo \
+		-arch $(ARCH_PACKAGE) \
+		-dLayoutRoot=$(WIXROOT_DOS)/layout \
+		-dShellExtensionDLL=$(WIXROOT_DOS)/layout/$(SHEXDLL) \
+		-dSrcRoot=$(WIXROOT_DOS)/src \
+		-dARCH_PACKAGE=$(ARCH_PACKAGE) \
+		-dBUILD_VERSION=$(BUILD_VERSION) \
+		-dVersion=$(VERSION) \
+		-dVersion3=$(VERSION3)
+
+WXS:=	main.wxs			\
+	frag__cg__DesktopFolder.wxs	\
+	frag__cg__README_txt.wxs
+
+default:
+	@if [ -d $(WIXROOT_CYG) ]; then rm -rf $(WIXROOT_CYG); fi
+	@mkdir -p $(WIXROOT_CYG)
+	@#
+	@echo Create the LAYOUT directory....
+	@#
+	@mkdir -p $(WIXROOT_CYG)/layout
+	@#
+	@# Copy everything that we want installed on the target computer 
+	@# into $(WIXROOT_CYG)/layout and arrange it as we want it to
+	@# appear.  This allows us to rename/normalize any filenames from
+	@# how we store them in our tree.  It also gives us a place to do
+	@# any necessary branding/@token@ substitution.
+	@#
+	@cp    ../../sgdm3_license.rtf                      $(WIXROOT_CYG)/layout/License.rtf
+	@cp    ./README.txt                                 $(WIXROOT_CYG)/layout/README.txt
+	@#
+	@echo Create the WIX SRC directory....
+	@#
+	@mkdir -p $(WIXROOT_CYG)/src
+	@#
+	@# Copy all of the hand-written WIX XML source files and the various
+	@# installer artwork.  We need these to compile the installer, only.
+	@# We do not need to acutally install them on the target computer.
+	@#
+	@for k in $(WXI); do cp ./$$k $(WIXROOT_CYG)/src; done
+	@for k in $(WXS); do cp ./$$k $(WIXROOT_CYG)/src; done
+	@cp sg_banner.jpg   $(WIXROOT_CYG)/src/banner.jpg
+	@cp sg_dialog.jpg   $(WIXROOT_CYG)/src/dialog.jpg
+	@cp DiffMergeIcon_32x32_32.ico $(WIXROOT_CYG)/src/icon.ico
+	@#
+	@# Copy the DiffMerge MSM into the WIX SRC directory.
+	@# (We ASSUME that the MSM was already build by a previous step.)
+	@#
+	@cp $(FINAL_MSIDIR_CYG)/$(MSM_NAME) $(WIXROOT_CYG)/src/$(MSM_NAME)
+	@#
+	@# For some stupid reason the latest version of cygwin's "cp" command
+	@# copies files over and gives them an ACL that makes them look like
+	@# they have a "chmod 000", which causes anthing that uses them to fail.
+	@#
+	@echo Fixing permissions before running WIX...
+	@chmod --verbose --recursive 777 $(WIXROOT_CYG)
+	@#
+	@echo Create the WIX OBJ directory....
+	@#
+	mkdir -p $(WIXROOT_CYG)/obj
+	@#
+	@echo Compile WIX XML source files/fragments into object code....
+	@#
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__DesktopFolder.wxs  $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__DesktopFolder.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/frag__cg__README_txt.wxs     $(CANDLEARGS) -out $(WIXROOT_DOS)/obj/frag__cg__README_txt.wixobj
+	@$(CANDLE) $(WIXROOT_DOS)/src/main.wxs $(CANDLEARGS) \
+			-out $(WIXROOT_DOS)/obj/main.wixobj
+	@#
+	@echo Create the WIX BIN directory....
+	@#
+	@mkdir -p $(WIXROOT_CYG)/bin
+	@#
+	@echo Link all of the compiled WIX object files into an Installer Package .msi....
+	@#
+	@# We do this into .../wix/bin and then move it to the
+	@# final destination because LIGHT also creates other trash.
+	@#
+	@$(LIGHT) -nologo \
+		$(WIXROOT_DOS)/obj/main.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__DesktopFolder.wixobj \
+		$(WIXROOT_DOS)/obj/frag__cg__README_txt.wixobj \
+		-ext WixUtilExtension.dll \
+		-ext WixUIExtension \
+		-sice:ICE82 \
+		-cultures:en-us \
+		-out $(WIXROOT_DOS)/bin/$(MSI_NAME)
+	@mv $(WIXROOT_CYG)/bin/$(MSI_NAME) $(FINAL_MSIDIR_CYG)/$(MSI_NAME)
+
+report_outputs:
+	@echo $(FINAL_MSIDIR_CYG)/$(MSI_NAME)

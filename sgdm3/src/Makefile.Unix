@@ -1,0 +1,153 @@
+## Makefile, GNU Makefile for sgdm3 for Linux and Apple
+##################################################################
+
+MODE:=Release
+####MODE:=Debug
+
+##################################################################
+
+ifeq ($(shell uname),Linux)
+OS_NAME:=Linux
+TK:=gtk3
+else ifeq ($(shell uname),Darwin)
+OS_NAME:=Apple
+TK:=osx_cocoa
+else
+$(error Unknown uname value: $(shell uname))
+endif
+
+ifeq (,$(strip $(BUILD)))
+$(error The BUILD variable was not set.  This is the location of where the build will place all artifacts.)
+endif
+
+## set FLAVOR, ARCH, ARCH_PACKAGE on Linux.
+## set ARCH, ARCH_PACKAGE on Apple.
+include Config/Arch.$(OS_NAME).inc
+
+##################################################################
+## Version.
+
+BUILD_MAJOR:=5
+BUILD_MINOR:=0
+BUILD_REVISION:=0
+BUILD_BUILDNUM:=0
+BUILD_BUILDLABEL:=dev
+BUILD_CSID:=undefined
+
+BUILD_COPYRIGHTDATE:=2003-$(shell date +"%Y")
+
+##################################################################
+## we use a private build of wxWidgets that was built by ../thirdparty.
+## Only it knows what wxWidgets version we are using and where it placed
+## the actual binaries.
+
+ifeq ($(MODE),Debug)
+WXCFGARGS:=	"--toolkit=$(TK) --unicode=yes --debug=yes --static=yes"
+else
+WXCFGARGS:=	"--toolkit=$(TK) --unicode=yes --debug=no --static=yes"
+endif
+
+WXROOT:=$(shell $(MAKE) -C ../thirdparty -f Makefile.$(OS_NAME) --no-print-directory BUILD=$(BUILD) MODE=$(MODE) OS_NAME=$(OS_NAME) ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) _wxroot)
+
+##################################################################
+## select optional features (a space separated list of feature symbols)
+
+ifeq ($(OS_NAME),Apple)
+ENABLED_FEATURES:=	"FEATURE_BATCHOUTPUT"
+DISABLED_FEATURES:=	""
+endif
+
+ifeq ($(OS_NAME),Linux)
+ENABLED_FEATURES:=	"FEATURE_BATCHOUTPUT"
+DISABLED_FEATURES:=	""
+endif
+
+##################################################################
+## default build directory.
+##
+## make this local to this machine -- incase source is shared over
+## the network.
+
+##################################################################
+
+DIRS=	Config util rs fim poi fs fd fl de xt gui
+
+##################################################################
+
+default:
+	@date
+	@for subdir in $(DIRS); do \
+		$(MAKE) -C $$subdir -f Makefile.Unix MODE=$(MODE) \
+					BUILD=$(BUILD) \
+					OS_NAME=$(OS_NAME) FLAVOR=$(FLAVOR) FLAVOR_ARCH=$(FLAVOR_ARCH) \
+					ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) \
+					WXROOT=$(WXROOT) \
+					WXCFGARGS=$(WXCFGARGS) \
+					BUILD_MAJOR=$(BUILD_MAJOR) BUILD_MINOR=$(BUILD_MINOR) BUILD_REVISION=$(BUILD_REVISION) BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+					BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) BUILD_CSID=$(BUILD_CSID) \
+					ENABLED_FEATURES=$(ENABLED_FEATURES) DISABLED_FEATURES=$(DISABLED_FEATURES) \
+					default \
+		|| exit 1; \
+	done
+	@date
+
+clean:
+	@for subdir in $(DIRS); do \
+		$(MAKE) -C $$subdir -f Makefile.Unix MODE=$(MODE) \
+					BUILD=$(BUILD) \
+					OS_NAME=$(OS_NAME) FLAVOR=$(FLAVOR) FLAVOR_ARCH=$(FLAVOR_ARCH) \
+					ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) \
+					WXROOT=$(WXROOT) \
+					WXCFGARGS=$(WXCFGARGS) \
+					BUILD_MAJOR=$(BUILD_MAJOR) BUILD_MINOR=$(BUILD_MINOR) BUILD_REVISION=$(BUILD_REVISION) BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+					BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) BUILD_CSID=$(BUILD_CSID) \
+					clean; \
+	done
+
+##################################################################
+## hack to run test exe in right environment
+
+RUNARGS=
+
+run:
+	@$(MAKE) -C gui -f Makefile.Unix MODE=$(MODE) \
+			BUILD=$(BUILD) \
+			OS_NAME=$(OS_NAME) FLAVOR=$(FLAVOR) FLAVOR_ARCH=$(FLAVOR_ARCH) \
+			ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) \
+			WXROOT=$(WXROOT) \
+			WXCFGARGS=$(WXCFGARGS) \
+			BUILD_MAJOR=$(BUILD_MAJOR) BUILD_MINOR=$(BUILD_MINOR) BUILD_REVISION=$(BUILD_REVISION) BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+			BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) BUILD_CSID=$(BUILD_CSID) \
+			run $(RUNARGS)
+
+##################################################################
+## hack to set env vars in interactive shell. do `make env`
+
+env:
+	@$(MAKE) -C Config -f Makefile.Unix MODE=$(MODE) \
+				BUILD=$(BUILD) \
+				OS_NAME=$(OS_NAME) FLAVOR=$(FLAVOR) FLAVOR_ARCH=$(FLAVOR_ARCH) \
+				ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) \
+				WXROOT=$(WXROOT) \
+				WXCFGARGS=$(WXCFGARGS) \
+				BUILD_MAJOR=$(BUILD_MAJOR) BUILD_MINOR=$(BUILD_MINOR) BUILD_REVISION=$(BUILD_REVISION) BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+				BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) BUILD_CSID=$(BUILD_CSID) \
+				-s env
+
+##################################################################
+
+.PHONY:	clean run env
+
+##################################################################
+
+report_outputs:
+	@$(MAKE) -C gui -f Makefile.Unix --no-print-directory \
+			MODE=$(MODE) \
+			BUILD=$(BUILD) \
+			OS_NAME=$(OS_NAME) FLAVOR=$(FLAVOR) FLAVOR_ARCH=$(FLAVOR_ARCH) \
+			ARCH=$(ARCH) ARCH_PACKAGE=$(ARCH_PACKAGE) \
+			WXROOT=$(WXROOT) \
+			WXCFGARGS=$(WXCFGARGS) \
+			BUILD_MAJOR=$(BUILD_MAJOR) BUILD_MINOR=$(BUILD_MINOR) BUILD_REVISION=$(BUILD_REVISION) BUILD_BUILDNUM=$(BUILD_BUILDNUM) \
+			BUILD_COPYRIGHTDATE=$(BUILD_COPYRIGHTDATE) BUILD_BUILDLABEL=$(BUILD_BUILDLABEL) BUILD_CSID=$(BUILD_CSID) \
+			report_outputs

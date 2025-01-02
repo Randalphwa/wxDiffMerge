@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'SourceGearDiffMergeShellExtension32'
+		'SourceGearDiffMergeShellExtension32.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

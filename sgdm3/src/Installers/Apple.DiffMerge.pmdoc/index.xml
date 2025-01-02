@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<pkmkdoc spec="1.12">
+	<properties>
+		<title>DiffMerge</title>
+		<organization>com.sourcegear</organization>
+		<userSees ui="easy"/>
+		<min-target os="3"/>
+		<domain system="true"/>
+	</properties>
+	<distribution>
+		<versions min-spec="1.000000"/>
+		<scripts/>
+	</distribution>
+	<contents>
+		<choice title="root" id="choice137" starts_selected="true" starts_enabled="true" starts_hidden="false">
+			<pkgref id="com.sourcegear.DiffMerge"/>
+		</choice>
+	</contents>
+	<resources bg-scale="none" bg-align="bottomleft">
+		<locale lang="en">
+			<resource mod="true" type="background">@PKGDIR@/Apple.installer_bg.png</resource>
+			<resource mod="true" type="license">@PKGDIR@/License.rtf</resource>
+		</locale>
+	</resources>
+	<flags/>
+	<item type="file">01root.xml</item>
+	<mod>properties.title</mod>
+	<mod>properties.anywhereDomain</mod>
+	<mod>properties.systemDomain</mod>
+</pkmkdoc>

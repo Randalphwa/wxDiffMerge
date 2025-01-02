@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<pkgref spec="1.12" uuid="30956A8F-865B-494D-8784-2A18C344C1FE">
+	<config>
+		<identifier>com.sourcegear.DiffMerge</identifier>
+		<version>1.0</version>
+		<description/>
+		<post-install type="none"/>
+		<requireAuthorization/>
+		<installFrom>@PKG_ROOT@</installFrom>
+		<installTo>/</installTo>
+		<flags>
+			<followSymbolicLinks/>
+		</flags>
+		<packageStore type="internal"/>
+		<mod>identifier</mod>
+		<mod>parent</mod>
+	</config>
+	<contents>
+		<file-list>01root-contents.xml</file-list>
+		<component id="com.sourcegear.DiffMerge" path="@PKG_ROOT@/Applications/DiffMerge.app" version="@BUILD_VERSION@" isRelocatable="true">
+			<locator-info>
+				<token title="pkmk-token-10">
+					<search-rule>
+						<combo identifier="com.sourcegear.DiffMerge" default-path="/Applications/DiffMerge.app"/>
+					</search-rule>
+				</token>
+			</locator-info>
+		</component>
+		<filter>/CVS$</filter>
+		<filter>/\.svn$</filter>
+		<filter>/\.cvsignore$</filter>
+		<filter>/\.cvspass$</filter>
+		<filter>/\.DS_Store$</filter>
+	</contents>
+</pkgref>

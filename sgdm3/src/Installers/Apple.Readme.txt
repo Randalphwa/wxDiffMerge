@@ -1,0 +1,8 @@
+SourceGear DiffMerge
+Revision @MAJOR@.@MINOR@.@REVISION@.@BUILDNUM@ @BUILDLABEL@
+Copyright (C) @COPYRIGHTDATE@ SourceGear LLC. All Rights Reserved.
+
+This package was built on Mac OS X: @OSX_RELEASE@
+
+See the manual for installation and licensing information.
+

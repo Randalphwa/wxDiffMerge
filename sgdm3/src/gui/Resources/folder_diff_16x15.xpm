@@ -1,0 +1,22 @@
+/* XPM */
+const char * gXpm_folder_diff_16x15[]={
+"16 15 4 1",
+". c None",
+"b c #585858",
+"# c #808080",
+"a c #ffff00",
+"................",
+".####...........",
+".#aaa#####......",
+".#aaaaaaaab.....",
+".#aaaaaaaab.....",
+".#aaa####ab.....",
+".#aaa#aaa#####..",
+".#aaa#aaaaaaaab.",
+"..bbb#aaaaaaaab.",
+".....#aaaaaaaab.",
+".....#aaaaaaaab.",
+".....#aaaaaaaab.",
+"......bbbbbbbbb.",
+"................",
+"................"};

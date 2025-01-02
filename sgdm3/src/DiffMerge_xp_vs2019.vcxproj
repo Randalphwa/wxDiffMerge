@@ -1,0 +1,760 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>DiffMerge</ProjectName>
+    <ProjectGuid>{3012FBBE-0906-46A6-B25B-D501FB848362}</ProjectGuid>
+    <RootNamespace>DiffMerge</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(DIFFMERGE_BUILD_ROOT)\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(DIFFMERGE_BUILD_ROOT)\obj\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(DIFFMERGE_BUILD_ROOT)\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(DIFFMERGE_BUILD_ROOT)\obj\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(DIFFMERGE_BUILD_ROOT)\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(DIFFMERGE_BUILD_ROOT)\obj\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(DIFFMERGE_BUILD_ROOT)\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(DIFFMERGE_BUILD_ROOT)\obj\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Inputs>%(Inputs)</Inputs>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;$(WXWIDGETS_INCLUDE);$(WXWIDGETS_LIB_INCLUDE);$(CURL_INCLUDE);.\Config;.\key;.\util;.\fd;.\poi;.\fim;.\fl;.\de;.\fs;.\rs;.\xt;.\gui;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>ConfigPch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(WXWIDGETS_INCLUDE);$(CURL_INCLUDE);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ResourceOutputFileName>$(IntDir)%(Filename).res</ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>Crypt32.lib;Normaliz.lib;Wldap32.lib;Ws2_32.lib;libcurl_a.lib;wxmsw30ud_adv.lib;wxmsw30ud_core.lib;wxmsw30ud_html.lib;wxbase30ud.lib;wxbase30ud_net.lib;wxbase30ud_xml.lib;wxexpatd.lib;wxjpegd.lib;wxpngd.lib;wxregexud.lib;wxtiffd.lib;wxzlibd.lib;shlwapi.lib;comctl32.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXWIDGETS_LIB);$(CURL_LIB);$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(IntDir)$(TargetName).map</MapFileName>
+      <MapExports>true</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ManifestFile>$(IntDir)$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+    <ManifestResourceCompile>
+      <ResourceOutputFileName>$(IntDir)$(TargetName)$(TargetExt).embed.manifest.res</ResourceOutputFileName>
+    </ManifestResourceCompile>
+    <Xdcmake>
+      <OutputFile>$(IntDir)$(TargetName).xml</OutputFile>
+    </Xdcmake>
+    <Bscmake>
+      <OutputFile>$(IntDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <BuildLog>
+      <Path>$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Inputs>%(Inputs)</Inputs>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;$(WXWIDGETS_INCLUDE);$(WXWIDGETS_LIB_INCLUDE);$(CURL_INCLUDE);.\Config;.\key;.\util;.\fd;.\poi;.\de;.\fs;.\fl;.\fim;.\rs;.\xt;.\gui;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>ConfigPch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(WXWIDGETS_INCLUDE);$(CURL_INCLUDE);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ResourceOutputFileName>$(IntDir)%(Filename).res</ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>Crypt32.lib;Normaliz.lib;Wldap32.lib;Ws2_32.lib;libcurl_a.lib;wxmsw30u_adv.lib;wxmsw30u_core.lib;wxmsw30u_html.lib;wxbase30u.lib;wxbase30u_net.lib;wxbase30u_xml.lib;wxexpat.lib;wxjpeg.lib;wxpng.lib;wxregexu.lib;wxtiff.lib;wxzlib.lib;shlwapi.lib;comctl32.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXWIDGETS_LIB);$(CURL_LIB);$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(IntDir)$(TargetName).map</MapFileName>
+      <MapExports>true</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ManifestFile>$(IntDir)$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+    <ManifestResourceCompile>
+      <ResourceOutputFileName>$(IntDir)$(TargetName)$(TargetExt).embed.manifest.res</ResourceOutputFileName>
+    </ManifestResourceCompile>
+    <Xdcmake>
+      <OutputFile>$(IntDir)$(TargetName).xml</OutputFile>
+    </Xdcmake>
+    <Bscmake>
+      <OutputFile>$(IntDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <BuildLog>
+      <Path>$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Inputs>%(Inputs)</Inputs>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;$(WXWIDGETS_INCLUDE);$(WXWIDGETS_LIB_INCLUDE);$(CURL_INCLUDE);.\Config;.\key;.\util;.\fd;.\poi;.\fim;.\fl;.\de;.\fs;.\rs;.\xt;.\gui;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;DEBUG;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>ConfigPch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(WXWIDGETS_INCLUDE);$(CURL_INCLUDE);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ResourceOutputFileName>$(IntDir)%(Filename).res</ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>Crypt32.lib;Normaliz.lib;Wldap32.lib;Ws2_32.lib;libcurl_a.lib;wxmsw30ud_adv.lib;wxmsw30ud_core.lib;wxmsw30ud_html.lib;wxbase30ud.lib;wxbase30ud_net.lib;wxbase30ud_xml.lib;wxexpatd.lib;wxjpegd.lib;wxpngd.lib;wxregexud.lib;wxtiffd.lib;wxzlibd.lib;shlwapi.lib;comctl32.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXWIDGETS_LIB);$(CURL_LIB);$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(IntDir)$(TargetName).map</MapFileName>
+      <MapExports>true</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+      <ManifestFile>$(IntDir)$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+    <ManifestResourceCompile>
+      <ResourceOutputFileName>$(IntDir)$(TargetName)$(TargetExt).embed.manifest.res</ResourceOutputFileName>
+    </ManifestResourceCompile>
+    <Xdcmake>
+      <OutputFile>$(IntDir)$(TargetName).xml</OutputFile>
+    </Xdcmake>
+    <Bscmake>
+      <OutputFile>$(IntDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <BuildLog>
+      <Path>$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Inputs>%(Inputs)</Inputs>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;$(WXWIDGETS_INCLUDE);$(WXWIDGETS_LIB_INCLUDE);$(CURL_INCLUDE);.\Config;.\key;.\util;.\fd;.\poi;.\de;.\fs;.\fl;.\fim;.\rs;.\xt;.\gui;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>ConfigPch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(WXWIDGETS_INCLUDE);$(CURL_INCLUDE);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ResourceOutputFileName>$(IntDir)%(Filename).res</ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>Crypt32.lib;Normaliz.lib;Wldap32.lib;Ws2_32.lib;libcurl_a.lib;wxmsw30u_adv.lib;wxmsw30u_core.lib;wxmsw30u_html.lib;wxbase30u.lib;wxbase30u_net.lib;wxbase30u_xml.lib;wxexpat.lib;wxjpeg.lib;wxpng.lib;wxregexu.lib;wxtiff.lib;wxzlib.lib;shlwapi.lib;comctl32.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXWIDGETS_LIB);$(CURL_LIB);$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(IntDir)$(TargetName).map</MapFileName>
+      <MapExports>true</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+      <ManifestFile>$(IntDir)$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
+      <ProfileGuidedDatabase>$(IntDir)$(TargetName).pgd</ProfileGuidedDatabase>
+    </Link>
+    <ManifestResourceCompile>
+      <ResourceOutputFileName>$(IntDir)$(TargetName)$(TargetExt).embed.manifest.res</ResourceOutputFileName>
+    </ManifestResourceCompile>
+    <Xdcmake>
+      <OutputFile>$(IntDir)$(TargetName).xml</OutputFile>
+    </Xdcmake>
+    <Bscmake>
+      <OutputFile>$(IntDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <BuildLog>
+      <Path>$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="gui\AboutBox.cpp" />
+    <ClCompile Include="gui\cl_args.cpp" />
+    <ClCompile Include="gui\dlg_auto_merge.cpp" />
+    <ClCompile Include="gui\dlg_auto_merge_result_summary.cpp" />
+    <ClCompile Include="gui\dlg_insert_mark.cpp" />
+    <ClCompile Include="gui\dlg_license.cpp" />
+    <ClCompile Include="gui\dlg_nag.cpp" />
+    <ClCompile Include="gui\dlg_nag__license.cpp" />
+    <ClCompile Include="gui\dlg_nag__new_revision.cpp" />
+    <ClCompile Include="gui\dlg_open.cpp" />
+    <ClCompile Include="gui\dlg_open_autocomplete.cpp" />
+    <ClCompile Include="gui\dlg_paid.cpp" />
+    <ClCompile Include="gui\dlg_show_shortcut_details.cpp" />
+    <ClCompile Include="gui\Doc.cpp" />
+    <ClCompile Include="gui\FrameFactory.cpp" />
+    <ClCompile Include="gui\Glance.cpp" />
+    <ClCompile Include="gui\gui_app.cpp" />
+    <ClCompile Include="gui\gui_app__banner.cpp" />
+    <ClCompile Include="gui\gui_app__batchoutput.cpp" />
+    <ClCompile Include="gui\gui_app__cl_args.cpp" />
+    <ClCompile Include="gui\gui_frame.cpp" />
+    <ClCompile Include="gui\gui_frame__event_table.cpp" />
+    <ClCompile Include="gui\gui_frame__events.cpp" />
+    <ClCompile Include="gui\gui_frame__events_closing.cpp" />
+    <ClCompile Include="gui\gui_frame__events_frame.cpp" />
+    <ClCompile Include="gui\gui_frame__iface_defs.cpp" />
+    <ClCompile Include="gui\gui_frame__iface_menu.cpp" />
+    <ClCompile Include="gui\gui_frame__iface_toolbar.cpp" />
+    <ClCompile Include="gui\gui_frame__iface_windowsize.cpp" />
+    <ClCompile Include="gui\MessageOutputString.cpp" />
+    <ClCompile Include="gui\MyBusyInfo.cpp" />
+    <ClCompile Include="gui\MyFindData.cpp" />
+    <ClCompile Include="gui\MyStaticText.cpp" />
+    <ClCompile Include="gui\OptionsDlg.cpp" />
+    <ClCompile Include="gui\Resources.cpp" />
+    <ClCompile Include="gui\SupportDlg.cpp" />
+    <ClCompile Include="gui\TaskListPanel.cpp" />
+    <ClCompile Include="gui\View.cpp" />
+    <ClCompile Include="gui\ViewFile.cpp" />
+    <ClCompile Include="gui\ViewFile__iface_defs.cpp" />
+    <ClCompile Include="gui\ViewFile__scroll.cpp" />
+    <ClCompile Include="gui\ViewFile__splitter.cpp" />
+    <ClCompile Include="gui\ViewFile__subwin.cpp" />
+    <ClCompile Include="gui\ViewFileCoord.cpp" />
+    <ClCompile Include="gui\ViewFileFont.cpp" />
+    <ClCompile Include="gui\ViewFilePanel.cpp" />
+    <ClCompile Include="gui\ViewFilePanel__kb.cpp" />
+    <ClCompile Include="gui\ViewFilePanel__kb_cua.cpp" />
+    <ClCompile Include="gui\ViewFilePanel__mouse.cpp" />
+    <ClCompile Include="gui\ViewFilePanel__paint.cpp" />
+    <ClCompile Include="gui\ViewFilePanel__selection.cpp" />
+    <ClCompile Include="gui\ViewFolder.cpp" />
+    <ClCompile Include="gui\ViewFolder_ImageList.cpp" />
+    <ClCompile Include="gui\ViewFolder_ListCtrl.cpp" />
+    <ClCompile Include="gui\ViewFolder_ListItemAttr.cpp" />
+    <ClCompile Include="gui\ViewPrintout.cpp" />
+    <ClCompile Include="gui\ViewPrintoutFile.cpp" />
+    <ClCompile Include="gui\ViewPrintoutFolder.cpp" />
+    <ClCompile Include="gui\ViewPrintoutFolderData.cpp" />
+    <ClCompile Include="Config\ConfigPch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="key\key_license.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="key\sghash.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="key\sghash__sha1.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="key\sg_uuid.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="util\util_background_thread_helper.cpp" />
+    <ClCompile Include="util\util_bitmap_button_validator.cpp" />
+    <ClCompile Include="util\util_cbl.cpp" />
+    <ClCompile Include="util\util_conditional_nonblank_text_validator.cpp" />
+    <ClCompile Include="util\util_curl.cpp" />
+    <ClCompile Include="util\util_convert.cpp" />
+    <ClCompile Include="util\util_dont_show_again_msgbox.cpp" />
+    <ClCompile Include="util\util_enc.cpp" />
+    <ClCompile Include="util\util_error.cpp" />
+    <ClCompile Include="util\util_file.cpp" />
+    <ClCompile Include="util\util_GlobalProps.cpp" />
+    <ClCompile Include="util\util_help_dlg.cpp" />
+    <ClCompile Include="util\util_log.cpp" />
+    <ClCompile Include="util\util_misc.cpp" />
+    <ClCompile Include="util\util_nonblank_text_validator.cpp" />
+    <ClCompile Include="util\util_perf.cpp" />
+    <ClCompile Include="util\util_reftab.cpp" />
+    <ClCompile Include="util\util_regexp_text_validator.cpp" />
+    <ClCompile Include="util\util_shell_lnk.cpp" />
+    <ClCompile Include="util\util_string.cpp" />
+    <ClCompile Include="util\util_treebook.cpp" />
+    <ClCompile Include="fd\fd_fd.cpp" />
+    <ClCompile Include="fd\fd_fd__export.cpp" />
+    <ClCompile Include="fd\fd_fd__export_csv.cpp" />
+    <ClCompile Include="fd\fd_fd__export_html.cpp" />
+    <ClCompile Include="fd\fd_fd__export_rq.cpp" />
+    <ClCompile Include="fd\fd_fd_table.cpp" />
+    <ClCompile Include="fd\fd_filter.cpp" />
+    <ClCompile Include="fd\fd_item.cpp" />
+    <ClCompile Include="fd\fd_item_table.cpp" />
+    <ClCompile Include="fd\fd_quickmatch.cpp" />
+    <ClCompile Include="fd\fd_softmatch.cpp" />
+    <ClCompile Include="fd\fd_softmatch__ruleset_mode_compare.cpp" />
+    <ClCompile Include="fd\fd_softmatch__simple_mode_compare.cpp" />
+    <ClCompile Include="fim\fim_buf.cpp" />
+    <ClCompile Include="fim\fim_buf_table.cpp" />
+    <ClCompile Include="fim\fim_crec.cpp" />
+    <ClCompile Include="fim\fim_crecvec.cpp" />
+    <ClCompile Include="fim\fim_frag.cpp" />
+    <ClCompile Include="fim\fim_patchset.cpp" />
+    <ClCompile Include="fim\fim_ptable.cpp" />
+    <ClCompile Include="fim\fim_ptable_table.cpp" />
+    <ClCompile Include="poi\poi_item.cpp" />
+    <ClCompile Include="poi\poi_item_table.cpp" />
+    <ClCompile Include="fl\fl_fl.cpp" />
+    <ClCompile Include="fl\fl_line.cpp" />
+    <ClCompile Include="fl\fl_run.cpp" />
+    <ClCompile Include="fl\fl_run_list.cpp" />
+    <ClCompile Include="fl\fl_run_list_endpoints.cpp" />
+    <ClCompile Include="fs\fs_fs.cpp" />
+    <ClCompile Include="fs\fs_fs_table.cpp" />
+    <ClCompile Include="de\de_css.cpp" />
+    <ClCompile Include="de\de_de.cpp" />
+    <ClCompile Include="de\de_de__batchoutput_html_sxs.cpp" />
+    <ClCompile Include="de\de_de__batchoutput_html_traditional.cpp" />
+    <ClCompile Include="de\de_de__batchoutput_html_unified.cpp" />
+    <ClCompile Include="de\de_de__batchoutput_text_traditional.cpp" />
+    <ClCompile Include="de\de_de__batchoutput_text_unified.cpp" />
+    <ClCompile Include="de\de_de__build_displaylist.cpp" />
+    <ClCompile Include="de\de_de__build_vecline.cpp" />
+    <ClCompile Include="de\de_de__fixup_nextprev.cpp" />
+    <ClCompile Include="de\de_de__insert_omitted.cpp" />
+    <ClCompile Include="de\de_de__intraline.cpp" />
+    <ClCompile Include="de\de_de__patch.cpp" />
+    <ClCompile Include="de\de_line.cpp" />
+    <ClCompile Include="de\de_mark.cpp" />
+    <ClCompile Include="de\de_sync.cpp" />
+    <ClCompile Include="de\de_sync_line_omitted.cpp" />
+    <ClCompile Include="de\de_sync_list.cpp" />
+    <ClCompile Include="rs\rs_choose_dlg.cpp" />
+    <ClCompile Include="rs\rs_context.cpp" />
+    <ClCompile Include="rs\rs_context_dlg.cpp" />
+    <ClCompile Include="rs\rs_lomit.cpp" />
+    <ClCompile Include="rs\rs_lomit_dlg.cpp" />
+    <ClCompile Include="rs\rs_ruleset.cpp" />
+    <ClCompile Include="rs\rs_ruleset_dlg.cpp" />
+    <ClCompile Include="rs\rs_ruleset_table.cpp" />
+    <ClCompile Include="util\jsonreader.cpp" />
+    <ClCompile Include="util\jsonval.cpp" />
+    <ClCompile Include="util\jsonwriter.cpp" />
+    <ClCompile Include="xt\xt_tool.cpp" />
+    <ClCompile Include="xt\xt_tool_dlg.cpp" />
+    <ClCompile Include="xt\xt_tool_table.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gui\AboutBox.h" />
+    <ClInclude Include="gui\branding.h" />
+    <ClInclude Include="gui\cl_args.h" />
+    <ClInclude Include="gui\dlg_auto_merge.h" />
+    <ClInclude Include="gui\dlg_auto_merge_result_summary.h" />
+    <ClInclude Include="gui\dlg_insert_mark.h" />
+    <ClInclude Include="gui\dlg_license.h" />
+    <ClInclude Include="gui\dlg_nag.h" />
+    <ClInclude Include="gui\dlg_open.h" />
+    <ClInclude Include="gui\dlg_open_autocomplete.h" />
+    <ClInclude Include="gui\dlg_paid.h" />
+    <ClInclude Include="gui\dlg_show_shortcut_details.h" />
+    <ClInclude Include="gui\Doc.h" />
+    <ClInclude Include="gui\FrameFactory.h" />
+    <ClInclude Include="gui\Glance.h" />
+    <ClInclude Include="gui\gui.h" />
+    <ClInclude Include="gui\gui_app.h" />
+    <ClInclude Include="gui\gui_app__banner.h" />
+    <ClInclude Include="gui\gui_dcl.h" />
+    <ClInclude Include="gui\gui_frame.h" />
+    <ClInclude Include="gui\gui_frame__event_table.h" />
+    <ClInclude Include="gui\gui_frame__iface_defs.h" />
+    <ClInclude Include="gui\MessageOutputString.h" />
+    <ClInclude Include="gui\MyBusyInfo.h" />
+    <ClInclude Include="gui\MyFindData.h" />
+    <ClInclude Include="gui\MyStaticText.h" />
+    <ClInclude Include="gui\OptionsDlg.h" />
+    <ClInclude Include="gui\Resources.h" />
+    <ClInclude Include="gui\SupportDlg.h" />
+    <ClInclude Include="gui\TaskListPanel.h" />
+    <ClInclude Include="gui\View.h" />
+    <ClInclude Include="gui\ViewFile.h" />
+    <ClInclude Include="gui\ViewFile__iface_defs.h" />
+    <ClInclude Include="gui\ViewFile__scroll.h" />
+    <ClInclude Include="gui\ViewFile__splitter.h" />
+    <ClInclude Include="gui\ViewFile__subwin.h" />
+    <ClInclude Include="gui\ViewFileCoord.h" />
+    <ClInclude Include="gui\ViewFileFont.h" />
+    <ClInclude Include="gui\ViewFilePanel.h" />
+    <ClInclude Include="gui\ViewFilePanel__kb.h" />
+    <ClInclude Include="gui\ViewFilePanel__mouse.h" />
+    <ClInclude Include="gui\ViewFilePanel__paint.h" />
+    <ClInclude Include="gui\ViewFilePanel__selection.h" />
+    <ClInclude Include="gui\ViewFolder.h" />
+    <ClInclude Include="gui\ViewFolder_ImageList.h" />
+    <ClInclude Include="gui\ViewFolder_ListCtrl.h" />
+    <ClInclude Include="gui\ViewFolder_ListItemAttr.h" />
+    <ClInclude Include="gui\ViewPrintout.h" />
+    <ClInclude Include="gui\ViewPrintoutFolderData.h" />
+    <ClInclude Include="gui\Artwork\hdr\DiffMergeSS.h" />
+    <ClInclude Include="gui\Artwork\hdr\ToolbarAd.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileDiff_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileDiff_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileEqual_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileEquivalent_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileMerge_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileNoPeer_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__LineNumbers_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__Pilcrow_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__Redo_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__Redo_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__SplitHorizontally_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__SplitVertically_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__Undo_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\Custom__Undo_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__automerge.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__automerge__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_all.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_all__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_ctx.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_ctx__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_dif.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_dif__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_back_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_back_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32__conflict.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32__conflict__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_next_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_next_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32__conflict.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32__conflict__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__copy_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__copy_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_zoom_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_zoom_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__paste_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__paste_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__scissors_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__scissors_32__dis.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_XMac_General__disk_32.h" />
+    <ClInclude Include="gui\IconShock\hdr\IS_XMac_General__disk_32__dis.h" />
+    <ClInclude Include="Config\ConfigDcl.h" />
+    <ClInclude Include="Config\ConfigMacros.h" />
+    <ClInclude Include="Config\ConfigPch.h" />
+    <ClInclude Include="Config\wx_proportional_splitter.h" />
+    <ClInclude Include="key\key.h" />
+    <ClInclude Include="key\key_license.h" />
+    <ClInclude Include="key\sghash.h" />
+    <ClInclude Include="key\sghash__private.h" />
+    <ClInclude Include="key\sghash__sha1.h" />
+    <ClInclude Include="key\sg_uuid.h" />
+    <ClInclude Include="util\util.h" />
+    <ClInclude Include="util\util_background_thread_helper.h" />
+    <ClInclude Include="util\util_bitmap_button_validator.h" />
+    <ClInclude Include="util\util_cbl.h" />
+    <ClInclude Include="util\util_conditional_nonblank_text_validator.h" />
+    <ClInclude Include="util\util_curl.h" />
+    <ClInclude Include="util\util_convert.h" />
+    <ClInclude Include="util\util_dcl.h" />
+    <ClInclude Include="util\util_dont_show_again_msgbox.h" />
+    <ClInclude Include="util\util_enc.h" />
+    <ClInclude Include="util\util_error.h" />
+    <ClInclude Include="util\util_error__defs.h" />
+    <ClInclude Include="util\util_GlobalProps.h" />
+    <ClInclude Include="util\util_GlobalProps__defs.h" />
+    <ClInclude Include="util\util_help_dlg.h" />
+    <ClInclude Include="util\util_log.h" />
+    <ClInclude Include="util\util_nonblank_text_validator.h" />
+    <ClInclude Include="util\util_perf.h" />
+    <ClInclude Include="util\util_reftab.h" />
+    <ClInclude Include="util\util_regexp_text_validator.h" />
+    <ClInclude Include="util\util_shell_lnk.h" />
+    <ClInclude Include="util\util_treebook.h" />
+    <ClInclude Include="util\json_defs.h" />
+    <ClInclude Include="util\jsonreader.h" />
+    <ClInclude Include="util\jsonval.h" />
+    <ClInclude Include="util\jsonwriter.h" />
+    <ClInclude Include="fd\fd.h" />
+    <ClInclude Include="fd\fd_dcl.h" />
+    <ClInclude Include="fd\fd_fd.h" />
+    <ClInclude Include="fd\fd_fd_table.h" />
+    <ClInclude Include="fd\fd_filter.h" />
+    <ClInclude Include="fd\fd_item.h" />
+    <ClInclude Include="fd\fd_item_table.h" />
+    <ClInclude Include="fd\fd_quickmatch.h" />
+    <ClInclude Include="fd\fd_softmatch.h" />
+    <ClInclude Include="fim\fim.h" />
+    <ClInclude Include="fim\fim_buf.h" />
+    <ClInclude Include="fim\fim_buf_table.h" />
+    <ClInclude Include="fim\fim_crec.h" />
+    <ClInclude Include="fim\fim_crecvec.h" />
+    <ClInclude Include="fim\fim_dcl.h" />
+    <ClInclude Include="fim\fim_frag.h" />
+    <ClInclude Include="fim\fim_patchset.h" />
+    <ClInclude Include="fim\fim_ptable.h" />
+    <ClInclude Include="fim\fim_ptable_table.h" />
+    <ClInclude Include="poi\poi.h" />
+    <ClInclude Include="poi\poi_dcl.h" />
+    <ClInclude Include="poi\poi_item.h" />
+    <ClInclude Include="poi\poi_item_table.h" />
+    <ClInclude Include="fl\fl.h" />
+    <ClInclude Include="fl\fl_dcl.h" />
+    <ClInclude Include="fl\fl_fl.h" />
+    <ClInclude Include="fl\fl_line.h" />
+    <ClInclude Include="fl\fl_run.h" />
+    <ClInclude Include="fl\fl_run_list.h" />
+    <ClInclude Include="fl\fl_run_list_endpoints.h" />
+    <ClInclude Include="fs\fs.h" />
+    <ClInclude Include="fs\fs_dcl.h" />
+    <ClInclude Include="fs\fs_fs.h" />
+    <ClInclude Include="fs\fs_fs_table.h" />
+    <ClInclude Include="de\de.h" />
+    <ClInclude Include="de\de_css.h" />
+    <ClInclude Include="de\de_dcl.h" />
+    <ClInclude Include="de\de_de.h" />
+    <ClInclude Include="de\de_mark.h" />
+    <ClInclude Include="de\de_sync.h" />
+    <ClInclude Include="de\de_sync_line_omitted.h" />
+    <ClInclude Include="de\de_sync_list.h" />
+    <ClInclude Include="rs\rs.h" />
+    <ClInclude Include="rs\rs_choose_dlg.h" />
+    <ClInclude Include="rs\rs_context.h" />
+    <ClInclude Include="rs\rs_context_dlg.h" />
+    <ClInclude Include="rs\rs_dcl.h" />
+    <ClInclude Include="rs\rs_lomit.h" />
+    <ClInclude Include="rs\rs_lomit_dlg.h" />
+    <ClInclude Include="rs\rs_ruleset.h" />
+    <ClInclude Include="rs\rs_ruleset_dlg.h" />
+    <ClInclude Include="rs\rs_ruleset_table.h" />
+    <ClInclude Include="xt\xt.h" />
+    <ClInclude Include="xt\xt_dcl.h" />
+    <ClInclude Include="xt\xt_tool.h" />
+    <ClInclude Include="xt\xt_tool_dlg.h" />
+    <ClInclude Include="xt\xt_tool_table.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gui\Resources\apply_left_24x24.xpm" />
+    <None Include="gui\Resources\apply_right_24x24.xpm" />
+    <None Include="gui\Resources\atmark_16x16.xpm" />
+    <None Include="gui\Resources\auto_merge_24x24.xpm" />
+    <None Include="gui\Resources\change_next_24x24.xpm" />
+    <None Include="gui\Resources\change_prev_24x24.xpm" />
+    <None Include="gui\Resources\checkmark_16x16.xpm" />
+    <None Include="gui\Resources\conflict_next_24x24.xpm" />
+    <None Include="gui\Resources\conflict_prev_24x24.xpm" />
+    <None Include="gui\Resources\dop_all_24x24.xpm" />
+    <None Include="gui\Resources\dop_ctx_24x24.xpm" />
+    <None Include="gui\Resources\dop_dif_24x24.xpm" />
+    <None Include="gui\Resources\dop_eql_24x24.xpm" />
+    <None Include="gui\Resources\dop_omitted_24x24.xpm" />
+    <None Include="gui\Resources\dop_squiggles_24x24.xpm" />
+    <None Include="gui\Resources\edit_copy_24x24.xpm" />
+    <None Include="gui\Resources\edit_cut_24x24.xpm" />
+    <None Include="gui\Resources\edit_paste_24x24.xpm" />
+    <None Include="gui\Resources\file_diff_24x24.xpm" />
+    <None Include="gui\Resources\file_merge_24x24.xpm" />
+    <None Include="gui\Resources\folder_diff_24x24.xpm" />
+    <None Include="gui\Resources\folder_equal_24x24.xpm" />
+    <None Include="gui\Resources\folder_folders_24x24.xpm" />
+    <None Include="gui\Resources\folder_nopeer_24x24.xpm" />
+    <None Include="gui\Resources\FolderWindow\blank.xpm" />
+    <None Include="gui\Resources\FolderWindow\error.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_equal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_equivalent.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_notequal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_plusminus.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_folder_plusminus.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_folder.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_link_equal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_link_notequal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_link_plusminus.xpm" />
+    <None Include="gui\Resources\line_numbers_24x24.xpm" />
+    <None Include="gui\Resources\minusmark_16x16.xpm" />
+    <None Include="gui\Resources\pilcrow_24x24.xpm" />
+    <None Include="gui\Resources\plusmark_16x16.xpm" />
+    <None Include="gui\Resources\questionmark_16x16.xpm" />
+    <None Include="gui\Resources\save_24x24.xpm" />
+    <None Include="gui\Resources\sg_32x32.xpm" />
+    <None Include="gui\Resources\tab2_24x24.xpm" />
+    <None Include="gui\Resources\tab4_24x24.xpm" />
+    <None Include="gui\Resources\tab8_24x24.xpm" />
+    <None Include="gui\Resources\xmark_16x16.xpm" />
+    <None Include="gui\Artwork\DiffMergeIcon.xpm" />
+    <None Include="gui\Artwork\DiffMergeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui\gui.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,67 @@
+## Makefile
+##################################################################
+
+include Config.inc
+
+##################################################################
+
+ifeq ($(strip $(BUILD_BUILDLABEL)),)
+DOT_BUILDLABEL:=
+else
+DOT_BUILDLABEL:=.$(BUILD_BUILDLABEL)
+endif
+
+##################################################################
+
+default:	Config.inc Config.$(OS_NAME).inc do_echo $(OBJDIR)/GEN_ConfigFeatures.h
+
+do_echo:
+	@echo Config is $(MODE)
+	@echo BUILD root is $(BUILD)
+	@echo BUILD version is $(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_REVISION).$(BUILD_BUILDNUM)$(DOT_BUILDLABEL)
+	@echo CSID is $(BUILD_CSID)
+	@echo ARCH is $(ARCH)
+	@echo ARCH_PACKAGE is $(ARCH_PACKAGE)
+	@echo ENABLED_FEATURES is $(ENABLED_FEATURES)
+	@echo DISABLED_FEATURES is $(DISABLED_FEATURES)
+ifeq ($(OS_NAME),Linux)
+	@echo GTK is $(GTK_VERSION)
+endif
+	@echo FLAVOR is $(FLAVOR)
+	@echo FLAVOR_ARCH is $(FLAVOR_ARCH)
+	@echo OBJDIR is $(OBJDIR)
+	@echo WXROOT is $(WXROOT)
+	@echo WXCFGARGS is $(WXCFGARGS)
+	@echo WX_CXX_FLAGS is $(WX_CXX_FLAGS)
+	@echo WX_CXX_LIBS is $(WX_CXX_LIBS)
+
+##################################################################
+
+include ../Config/ConfigFeatures.inc
+
+##################################################################
+
+clean:
+
+##################################################################
+## env -- print a little shell snippet that i can use to properly
+##        set env vars in a shell to run the target in a shell
+##        usage: `make env`
+
+env:		Config.inc Config.$(OS_NAME).inc
+	@echo export PKG_CONFIG_PATH=$(PKG_CONFIG_PATH)
+	@echo export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH)
+	@echo export PATH=$(PATH)
+
+
+
+
+
+
+
+
+
+
+
+
+

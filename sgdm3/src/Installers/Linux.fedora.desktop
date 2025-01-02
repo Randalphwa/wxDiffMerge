@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SourceGear DiffMerge
+GenericName=File Diff/Merge Viewer/Editor
+Icon=sourcegearcom-diffmerge
+Exec=@EXE@
+Terminal=false
+Categories=Development;Utility;
+Comment=Compare and merge files

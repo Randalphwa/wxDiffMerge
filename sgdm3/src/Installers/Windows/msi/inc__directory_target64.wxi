@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- Define the target directory in program files. -->
+  <!-- See also the definition of ApplicationFolderName in WixUI.wxi. -->
+
+  <!-- We let ProgramFiles/SourceGear/DiffMerge        be the directory associated with the MSI -->
+  <!--    and ProgramFiles/SourceGear/Common/DiffMerge be the directory associated with the core DiffMerge stuff in the MSM. -->
+
+  <Directory Id="ProgramFiles64Folder">
+    <Directory Id="dir_SourceGear" Name="SourceGear">
+      <Directory Id="APPLICATIONFOLDER" Name="DiffMerge">
+
+      </Directory>
+    </Directory>
+  </Directory>
+
+</Include>

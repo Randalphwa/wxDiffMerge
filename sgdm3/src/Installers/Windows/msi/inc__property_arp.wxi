@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- Property declarations for "Add/Remove Programs" (aka "Programs and Features") in the Control Panel. -->
+
+  <?if $(sys.BUILDARCH) = "x64" ?>
+  <Property Id="ARPCOMMENTS">Install/Remove SourceGear DiffMerge x64</Property>
+  <?else ?>
+  <Property Id="ARPCOMMENTS">Install/Remove SourceGear DiffMerge</Property>
+  <?endif ?>
+
+  <Property Id="ARPCONTACT">support@sourcegear.com</Property>
+  <Property Id="ARPHELPLINK">http://support.sourcegear.com</Property>
+  <Property Id="ARPURLINFOABOUT">http://www.sourcegear.com/diffmerge/index.html</Property>
+  <Property Id="ARPURLUPDATEINFO">http://www.sourcegear.com/diffmerge/index.html</Property>
+  <Property Id="ARPHELPTELEPHONE">(217) 356-0105 x700</Property>
+
+  <Icon Id="icon.ico" SourceFile="$(var.SrcRoot)\icon.ico" />
+  <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+  <!-- TODO <Property Id="ARPREADME">path</Property> -->
+
+</Include>

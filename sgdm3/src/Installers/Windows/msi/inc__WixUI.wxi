@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- We DO NOT use WixUI_Advanced because we do not want the advanced button. -->
+  <!-- [] We CAN NOT do per-user installs.  Because the DiffMerge MSM only does -->
+  <!--    per-machine installs as it wants to register the shell extension and  -->
+  <!--    and we want to be able to uninstall old 3.3.0 and earlier packages.   -->
+  <!-- [] We DO NOT want them to be able to change the install directory.       -->
+  <!--    Because this MSI is a thin wrapper around the MSM and we want the MSM -->
+  <!--    installed in a known location because it will be shared by Vault and  -->
+  <!--    veracity (once their installers are converted to use the MSM rather   -->
+  <!--    than keep a private version in their install directories.  Because of -->
+  <!--    I have changed the MSM to not reference [APPLICATIONFOLDER] which is  -->
+  <!--    shared between the MSI and its MSMs.  The MSM chooses its directory.  -->
+
+  <UIRef Id="WixUI_FeatureTree" />
+  <UIRef Id="WixUI_ErrorProgressText" />
+
+  <WixVariable Id="WixUILicenseRtf" Value="$(var.LayoutRoot)\License.rtf" />
+  <WixVariable Id="WixUIBannerBmp" Value="$(var.SrcRoot)\banner.jpg" /> <!-- 500x63 -->
+  <WixVariable Id="WixUIDialogBmp" Value="$(var.SrcRoot)\dialog.jpg" /> <!-- 500x314 -->
+
+</Include>

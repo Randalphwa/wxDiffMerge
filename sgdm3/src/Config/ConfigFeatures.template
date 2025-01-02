@@ -1,0 +1,54 @@
+// Config/ConfigFeatures.template ==> $(OBJDIR)/GEN_ConfigFeatures.h
+//
+// The place to define all FEATURE_ options
+//
+// THIS FILE IS EDITED BY SED BEFORE BUILDS.
+// 
+// Features that may be turned on are listed with lines starting
+// with //define and are changed to #define when we want the feature
+// enabled.
+//
+// If you add a new FEATURE_ be sure to add to COMPILED_FEATURE_LIST macro also.
+//////////////////////////////////////////////////////////////////
+
+#ifndef H_CONFIGFEATURES_H
+#define H_CONFIGFEATURES_H
+
+//////////////////////////////////////////////////////////////////
+// FEATURE_SHEX:  determines if the code is compiled into the program.
+// this should only be enabled on windows, since it deals with the
+// windows explorer/shell.
+
+#if defined(__WXMSW__)
+#define FEATURE_SHEX
+#endif
+
+#if defined(FEATURE_SHEX)
+#define str__feature_shex				L"\tFEATURE_SHEX\n"
+#else
+#define str__feature_shex
+#endif
+
+//////////////////////////////////////////////////////////////////
+// FEATURE_BATCHOUTPUT:  defined if we want the batchoutput (command
+// line diff output) included in build.  this is like gnudiff output.
+// we use this for testing.
+
+#define FEATURE_BATCHOUTPUT
+
+#if defined(FEATURE_BATCHOUTPUT)
+#define str__feature_batchoutput		L"\tFEATURE_BATCHOUTPUT\n"
+#else
+#define str__feature_batchoutput
+#endif
+
+//////////////////////////////////////////////////////////////////
+// COMPILED_FEATURE_LIST:  the string of compiled features is shown
+// in the support dialog.
+
+#define COMPILED_FEATURE_LIST	 str__feature_shex				\
+				 str__feature_batchoutput			\
+
+//////////////////////////////////////////////////////////////////
+
+#endif//H_CONFIGFEATURES_H

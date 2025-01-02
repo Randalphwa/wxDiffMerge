@@ -1,0 +1,23 @@
+## Makefile, GNU Makefile for sgdm3/fd for Linux.
+##################################################################
+
+MY_CXX_FLAGS=	
+MY_LD_LIBS=	
+MY_OBJDEPS=	Makefile.Unix
+MY_LIBDEPS=	Makefile.Unix
+
+
+include ../Config/Config.inc
+include ../util/util.inc
+include ../fim/fim.inc
+include ../poi/poi.inc
+include ../fd/fd.inc
+
+##################################################################
+
+SRCS=		$(FD_SRCS)
+TARGET_LIB=	$(FD_LIB)
+
+##################################################################
+
+include ../Config/ConfigLibrary.inc

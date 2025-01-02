@@ -1,0 +1,184 @@
+## Makefile -- build wxWidgets in steps.
+##################################################################
+## assumes that third-party library archives have already been
+## downloaded in $Tarballs.
+##################################################################
+
+OS_NAME:=Apple
+
+ifeq (,$(strip $(BUILD)))
+$(error The BUILD variable was not set.  This is the location of where the build will place all artifacts.)
+endif
+
+MODE:=Release
+####MODE:=Debug
+
+## set ARCH, ARCH_PACKAGE
+include ../src/Config/Arch.$(OS_NAME).inc
+
+VERSION:=3.2.6
+
+##################################################################
+## the name of the archive we downloaded.
+##
+#### 2012/07/30 See note in _unpack target about .zip vs .bz2
+
+ARCHIVE_PATHNAME:=Tarballs/wxWidgets-$(VERSION).tar.bz2
+
+##################################################################
+## the name that the archive will expand (the top-level directory
+## within the archive) which can be different when we get wxMAC
+## vs wxWidgets (all).
+
+ARCHIVE_DIR:=wxWidgets-$(VERSION)
+
+
+##################################################################
+## wxWidgets has been forked to provide Finder integration.
+## the following var represents the directory in which the
+## patch files can be located
+WXWIDGETS_PATCH_DIR:=wxWidgets-patch-$(VERSION)
+
+
+##################################################################
+## As of 4.0.0 building with wxWidgets 2.9.* and switching to 
+## x86_64 and Cocoa.
+
+ifeq ($(ARCH),x86_64)
+ARCH_FLAGS:="-arch x86_64"
+else ifeq ($(ARCH),arm64)
+ARCH_FLAGS:="-arch arm64"
+else
+$(error stop unknown/unsupported architecture. ARCH is $(ARCH))
+endif
+
+##################################################################
+## we keep our own build of wxWidgets so that we can let sgdm link
+## with whichever version it wants (using the inplace versions of
+## wx-config so that we have no need for /usr or /usr/local) and can
+## keep multiple versions at the same time.
+
+ZIP_PATHNAME=$(BUILD)/$(OS_NAME)/$(ARCH)/$(MODE)_patched
+SRC_PATHNAME=$(ZIP_PATHNAME)/$(ARCHIVE_DIR)
+OBJ_PATHNAME=$(SRC_PATHNAME)/obj
+MY_OSX_SDKS_PATHNAME=$(BUILD)/$(OS_NAME)/SDKs
+
+##################################################################
+MY_OSX_MIN:=11.3
+MY_OSX_SDK_NAME=MacOSX$(MY_OSX_MIN).sdk
+MY_OSX_SDK=$(MY_OSX_SDKS_PATHNAME)/$(MY_OSX_SDK_NAME)
+MY_OSX_SDK_TARBALL_PATHNAME:=Tarballs/$(MY_OSX_SDK_NAME).tar.xz
+
+MY_UNIV:=	--disable-universal_binary
+
+
+##################################################################
+## wxWidgets compile options
+##
+## wxBUG: this builds almost everything and we really don't need
+## wxBUG: it, but when i disabled and excluded stuff the build
+## wxBUG: was unstable and randomly crashed.  so just build most
+## wxBUG: everything and let the linker kick out what we don't need.
+
+COMMON_OPTIONS=				\
+		--with-osx_cocoa	\
+		--enable-monolithic	\
+		$(MY_UNIV)		\
+		--enable-unicode	\
+		--disable-shared	\
+        --with-libtiff=builtin \
+        --with-regex=builtin \
+		--without-opengl	\
+		--without-sdl		\
+		 --without-liblzma \
+		--with-macosx-version-min=$(MY_OSX_MIN) \
+		--with-macosx-sdk=$(MY_OSX_SDK)
+
+RELEASE_OPTIONS=	--enable-optimise
+
+DEBUG_OPTIONS=		--enable-debug		\
+			--enable-debug_gdb	\
+			--enable-debug_cntxt
+
+ifeq ($(MODE),Debug)
+MODE_OPTIONS:=$(DEBUG_OPTIONS)
+else
+MODE_OPTIONS:=$(RELEASE_OPTIONS)
+endif
+
+RUN_CONFIGURE=$(SRC_PATHNAME)/configure CFLAGS=$(ARCH_FLAGS) CXXFLAGS=$(ARCH_FLAGS) CPPFLAGS=$(ARCH_FLAGS) LDFLAGS=$(ARCH_FLAGS) OBJCFLAGS=$(ARCH_FLAGS) OBJCXXFLAGS=$(ARCH_FLAGS) $(COMMON_OPTIONS)
+
+##################################################################
+
+default:
+	echo What do you want to do...
+	exit 1
+
+##################################################################
+
+debug:
+	$(MAKE) MODE=Debug ARCH=$(ARCH) _all
+
+release:
+	$(MAKE) MODE=Release ARCH=$(ARCH) _all
+
+_all:	_unpack _config _compile
+
+##################################################################
+#### 2012/07/30 exp29
+#### In the 2.8.12, we used the zip file (and could build all 3 platforms
+#### from it (so I only needed to store one version of the archive in the
+#### tree).
+####
+#### Starting with 2.9.4, the zip file doesn't have the same root directory *AND*
+#### the CRLF's cause something in the configure scripts to barf on Apple.
+####
+#### So for Apple I'm going to use the bz2 package.
+##
+##
+
+_unpack:	$(ZIP_PATHNAME)
+	mkdir -p $(MY_OSX_SDKS_PATHNAME)
+	tar --cd $(MY_OSX_SDKS_PATHNAME) -x -f $(MY_OSX_SDK_TARBALL_PATHNAME)
+	bzcat $(ARCHIVE_PATHNAME) | (cd $(ZIP_PATHNAME); tar -xf -)
+
+$(ZIP_PATHNAME):
+	mkdir -p $(ZIP_PATHNAME)
+
+_config:	$(OBJ_PATHNAME)
+	(cd $(OBJ_PATHNAME); $(RUN_CONFIGURE) $(MODE_OPTIONS))
+
+_compile:	$(OBJ_PATHNAME)
+	(cd $(OBJ_PATHNAME); make)
+
+$(OBJ_PATHNAME):
+	mkdir -p $(OBJ_PATHNAME)
+
+##################################################################
+## clean .o's and stuff in build directory -- does not affect installation
+
+clean_debug:
+	$(MAKE) MODE=Debug ARCH=$(ARCH) _clean
+
+clean_release:
+	$(MAKE) MODE=Release ARCH=$(ARCH) _clean
+
+_clean:
+	(cd $(OBJ_PATHNAME); make clean >clean_log.txt 2>&1)
+
+
+_clobber:
+	rm -rf $(OBJ_PATHNAME)
+	rm -rf $(SRC_PATHNAME)
+
+##################################################################
+## echo wxWidgets root directory for use in building sgdm3.
+
+wxroot_debug:
+	@$(MAKE) MODE=Debug ARCH=$(ARCH) _wxroot
+
+wxroot_release:
+	@$(MAKE) MODE=Release ARCH=$(ARCH) _wxroot
+
+_wxroot:
+	@echo $(OBJ_PATHNAME)

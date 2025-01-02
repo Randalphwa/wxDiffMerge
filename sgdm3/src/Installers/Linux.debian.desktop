@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SourceGear DiffMerge
+GenericName=File Diff/Merge Viewer/Editor
+Icon=/usr/share/icons/hicolor/48x48/apps/@PACKAGE@.png
+Exec=@EXE@
+Terminal=false
+Categories=Development;GTK;TextEditor;TextTools;
+Comment=Compare and merge files

@@ -1,0 +1,60 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {2F410E77-24FD-4788-8412-3810115E7BCB} = s 'SourceGearDiffMergeShellExtension32 Class'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+		}
+	}
+
+	NoRemove *
+	{
+		NoRemove ShellEx
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove SourceGearDiffMergeShellExtension32 = s '{2F410E77-24FD-4788-8412-3810115E7BCB}'
+			}
+		}
+	}
+
+	NoRemove Directory
+	{
+		NoRemove ShellEx
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove SourceGearDiffMergeShellExtension32 = s '{2F410E77-24FD-4788-8412-3810115E7BCB}'
+			}
+		}
+	}
+}
+
+HKLM
+{
+	NoRemove Software
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Windows
+			{
+				NoRemove CurrentVersion
+				{
+					NoRemove 'Shell Extensions'
+					{
+						NoRemove Approved
+						{
+							val {2F410E77-24FD-4788-8412-3810115E7BCB} = s 'SourceGearDiffMergeShellExtension32'
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

@@ -1,0 +1,19 @@
+Source: @PACKAGE@
+Section: devel
+Priority: optional
+Maintainer: Jeff Hostetler <jeffh@sourcegear.com>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.3
+Homepage: http://www.sourcegear.com/diffmerge/index.html
+
+Package: @PACKAGE@
+Architecture: @ARCH_PACKAGE@
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: SourceGear DiffMerge
+ Revision @MAJOR@.@MINOR@.@REVISION@.@BUILDNUM@ @BUILDLABEL@
+ Copyright (C) @COPYRIGHTDATE@ SourceGear LLC. All Rights Reserved.
+ .
+ http://www.sourcegear.com/diffmerge/index.html
+ .
+ A file/folder difference viewer/editor with support for 3-way 
+ file merges.

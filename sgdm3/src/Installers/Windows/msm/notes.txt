@@ -1,0 +1,5 @@
+
+
+http://robmensching.com/blog/posts/2003/10/4/Windows-Installer-Components-Introduction
+http://robmensching.com/blog/posts/2003/10/18/Component-Rules-101
+

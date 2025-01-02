@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010-2011 SourceGear, LLC
+-->
+<Include>
+
+  <?if $(sys.BUILDARCH) = "x64" ?>
+
+  <?define GUID_Package_msm                 = "{3CFAD91A-148A-44DF-B728-2082C2BB43DA}" ?>
+
+  <?define GUID_DiffMerge_chm               = "{94C93D02-48BB-41F6-8967-C2027AC249CF}" ?>
+  <?define GUID_DiffMerge_exe               = "{FDB428FD-3EA6-4BDF-9CF5-CAE049E19F3B}" ?>
+  <?define GUID_DiffMergeManual_pdf         = "{2D6CE57E-71DB-44C7-9981-9BB5C77523DB}" ?>
+  <?define GUID_License_html                = "{FD654D5B-9943-4A97-A0E0-F99F72C1EBA1}" ?>
+  <?define GUID_License_rtf                 = "{42E0724D-FED0-4DC3-AD0D-C6F897648443}" ?>
+  <?define GUID_ShellExtension64_dll        = "{750347BC-1957-4F35-8902-7DE51C43A5F5}" ?>
+  <?define GUID_sgdm_cygwin_sh              = "{C903A960-737D-43BC-A264-C401BF3929D0}" ?>
+
+  <?define GUID_ProgramMenuFolder_DiffMerge_chm       = "{6758A102-A8E3-4A30-96A6-9F263ED909BA}" ?>
+  <?define GUID_ProgramMenuFolder_DiffMerge_exe       = "{95CCD08C-BBCD-43BF-B0B1-FD1B5FCBDEBE}" ?>
+  <?define GUID_ProgramMenuFolder_DiffMergeManual_pdf = "{E5EC9034-B28F-4690-A494-105BF5384EBB}" ?>
+
+  <?define GUID_More__index_html = "{E7E8A85B-A22D-412B-AA03-8D67CF723A51}" ?>
+  <?define GUID_More__sgbg_png = "{41E0CBF5-3A81-46F6-97CF-EA691FF00155}" ?>
+  <?define GUID_More__topleftlogo_gif = "{F2630573-9ABB-4551-93F2-0B0AD77279D0}" ?>
+  <?define GUID_More__vaultpro75_png = "{D41F6F8E-5511-4676-82F1-F8B26944FE4F}" ?>
+  <?define GUID_More__vaultstnd75_png = "{A7C27CAC-7042-47C5-9641-014A3A1BD657}" ?>
+  <?define GUID_More__veracity150_png = "{7B5B46F9-C3C8-42B9-B065-7F913605A449}" ?>
+
+  <?define GUID_Set__PATH = "{3ECFB96D-BEAD-4A76-BAD2-B9F8E5DB365F}" ?>
+
+  <?define GUID_Duplicate_Keys = "{67CFC6D9-E974-45EC-9A0F-47DB7CE631F2}" ?>
+
+  <?else ?>
+
+  <?define GUID_Package_msm                 = "{7AA59902-523A-44C4-98FE-364A6722ED81}" ?>
+
+  <?define GUID_DiffMerge_chm               = "{5F0AA270-2266-47B0-A897-ED16768194FF}" ?>
+  <?define GUID_DiffMerge_exe               = "{FCE970ED-55B7-41DC-BE09-16649D5036F6}" ?>
+  <?define GUID_DiffMergeManual_pdf         = "{F92F6325-D22F-4B83-A259-3ED0E3793C5D}" ?>
+  <?define GUID_License_html                = "{55530080-E1DC-4A9B-A2CE-1AFA9844CFE9}" ?>
+  <?define GUID_License_rtf                 = "{7DF19728-7416-4B8E-B181-5622B73D16C5}" ?>
+  <?define GUID_sgdm_cygwin_sh              = "{0A544E75-4526-4453-A0FA-11B180014335}" ?>
+
+  <?define GUID_ProgramMenuFolder_DiffMerge_chm       = "{D2928C60-B699-45B0-BFBE-BBA3812F2AA0}" ?>
+  <?define GUID_ProgramMenuFolder_DiffMerge_exe       = "{8E9CB69A-49F2-4EA2-A6A5-6579F8FE8421}" ?>
+  <?define GUID_ProgramMenuFolder_DiffMergeManual_pdf = "{18B29313-EB05-4BE9-ACB7-34525D3344DF}" ?>
+
+  <?define GUID_More__index_html = "{79783F78-1428-4E98-80A8-DAB92A041E45}" ?>
+  <?define GUID_More__sgbg_png = "{59C2A1BD-056C-4282-9447-D21B808C263B}" ?>
+  <?define GUID_More__topleftlogo_gif = "{48FE1AC8-112A-4A7A-AE9C-63B0F785A179}" ?>
+  <?define GUID_More__vaultpro75_png = "{AD8B8802-7C6A-416B-A19E-5FEC42321AE5}" ?>
+  <?define GUID_More__vaultstnd75_png = "{ADE997CC-3286-47FB-8F45-0A87606290A9}" ?>
+  <?define GUID_More__veracity150_png = "{14F4F298-727C-47C0-B4ED-982CA66E5A45}" ?>
+
+  <?define GUID_Set__PATH = "{8399736A-C5BF-4B90-8D6D-A109C5BBA4A4}" ?>
+
+  <?endif ?>
+
+  <!-- We install the 32-bit extension on both 32- and 64-bit platforms so it is always defined. -->
+  <?define GUID_ShellExtension32_dll        = "{5FF198AD-3690-444F-8F6E-6482BA42578B}" ?>
+
+</Include>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="$(var.dir_DiffMergeNative)">
+      <Component 
+         Id="cmp_sgdm_cygwin_sh"
+	 Guid="$(var.GUID_sgdm_cygwin_sh)"
+	 Win64="$(var.Is64)">
+
+        <File
+	   Id="cmp_sgdm_cygwin_sh"
+	   CompanionFile="file__diffmerge_exe"
+	   Source="$(var.LayoutRoot)\sgdm_cygwin.sh" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="sgdm_cygwin.sh"
+	   Value="[$(var.dir_DiffMergeNative)]sgdm_cygwin.sh" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__sgdm_cygwin_sh">
+      <ComponentRef Id="cmp_sgdm_cygwin_sh" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

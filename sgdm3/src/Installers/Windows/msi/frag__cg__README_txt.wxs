@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msi_other_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="APPLICATIONFOLDER">
+      <Component 
+         Id="cmp__readme_txt"
+	 Guid="$(var.GUID_readme_txt)"
+	 Win64="$(var.Is64)">
+
+        <File
+	   Id="file__readme_txt"
+	   KeyPath="yes"
+	   Source="$(var.LayoutRoot)\README.txt" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="README"
+	   Value="[APPLICATIONFOLDER]README.txt" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__README_txt">
+      <ComponentRef Id="cmp__readme_txt" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

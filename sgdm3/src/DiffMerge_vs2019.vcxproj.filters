@@ -1,0 +1,1248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\gui">
+      <UniqueIdentifier>{ca86816c-9a87-4e53-b474-17f783f7fb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Config">
+      <UniqueIdentifier>{ac0270d3-c929-4134-9f6a-8f6f78ab77bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{5b09f972-ebff-45ed-94f6-b1d39119015d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fd">
+      <UniqueIdentifier>{595d66b1-72e2-4a3d-912a-f2bd7da5b715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fim">
+      <UniqueIdentifier>{9600219c-88f7-45e0-b627-9b1b0ddb13e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\poi">
+      <UniqueIdentifier>{7c55645e-d057-40b0-89d4-99a8ad1d573e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fl">
+      <UniqueIdentifier>{101373f1-9d2b-480f-845b-f94ea24f259b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fs">
+      <UniqueIdentifier>{29cb4992-3072-4211-8fa1-4043e264fee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\de">
+      <UniqueIdentifier>{359283fc-3860-40fa-b3a0-1495bbb51f75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\rs">
+      <UniqueIdentifier>{bef619b4-d128-434e-bc0b-7e82827dc2c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xt">
+      <UniqueIdentifier>{8dfa82a9-a0b5-4dfc-b1dc-edca15c9a844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\gui">
+      <UniqueIdentifier>{0f708209-08af-4df3-b34f-2e3c72a631d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\Resources">
+      <UniqueIdentifier>{b6bf5934-c403-4f8e-818b-d5cfe5d346b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\Artwork">
+      <UniqueIdentifier>{2793a0b3-98bb-4789-a694-d41c04c9feef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\Artwork\hdr">
+      <UniqueIdentifier>{e76307b2-e8e4-4523-ab47-3c60a4599903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\IconShock">
+      <UniqueIdentifier>{50c23505-d00b-4e99-a6ce-3c35211fa4c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\IconShock\hdr">
+      <UniqueIdentifier>{3b33e1d3-2822-4b1c-98b8-52de82a0236a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Config">
+      <UniqueIdentifier>{e06f945d-b54d-4e46-9706-e879c44953d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{760c4628-d6aa-4501-89fe-3c14d06cc345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fd">
+      <UniqueIdentifier>{7342d26b-45b6-4105-a99a-0df251f390e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fim">
+      <UniqueIdentifier>{716e9b54-5533-4684-9748-66af6d05ea58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\poi">
+      <UniqueIdentifier>{b01603f9-c4f5-4c20-a8ca-76297cea55b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fl">
+      <UniqueIdentifier>{071306e1-4116-4bb5-947b-186ebb3885df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fs">
+      <UniqueIdentifier>{36918182-252c-4ac0-8feb-52d065e7ab5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\de">
+      <UniqueIdentifier>{fb5abacd-b515-4e0e-a45d-a711a2966ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rs">
+      <UniqueIdentifier>{92bbc3be-a479-4c63-8838-0cb7b37aa578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\xt">
+      <UniqueIdentifier>{b4acb9ca-5fa3-4469-b875-6e7c37dc4181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\key">
+      <UniqueIdentifier>{07dff739-28fe-42ec-93e9-17dbe68f328f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\key">
+      <UniqueIdentifier>{6c78d187-6817-4fa6-bd4b-8ea0d40b2675}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gui\AboutBox.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\cl_args.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_auto_merge.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_auto_merge_result_summary.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_insert_mark.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_license.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_open.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Doc.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FrameFactory.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Glance.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_app.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_app__banner.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_app__cl_args.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__event_table.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__events.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__events_closing.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__events_frame.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__iface_defs.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__iface_menu.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__iface_toolbar.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_frame__iface_windowsize.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\MessageOutputString.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\MyBusyInfo.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\MyFindData.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\MyStaticText.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\OptionsDlg.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Resources.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\SupportDlg.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\TaskListPanel.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\View.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFile.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFile__iface_defs.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFile__scroll.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFile__splitter.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFile__subwin.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFileCoord.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFileFont.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFilePanel.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFilePanel__kb.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFilePanel__kb_cua.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFilePanel__mouse.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFilePanel__paint.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFilePanel__selection.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFolder.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFolder_ImageList.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFolder_ListCtrl.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewFolder_ListItemAttr.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewPrintout.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewPrintoutFile.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewPrintoutFolder.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ViewPrintoutFolderData.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Config\ConfigPch.cpp">
+      <Filter>Source Files\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="util\jsonreader.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\jsonval.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\jsonwriter.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_background_thread_helper.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_bitmap_button_validator.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_cbl.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_conditional_nonblank_text_validator.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_curl.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_dont_show_again_msgbox.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_enc.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_error.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_file.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_GlobalProps.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_help_dlg.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_log.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_nonblank_text_validator.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_perf.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_reftab.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_regexp_text_validator.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_string.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_treebook.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_fd.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_fd__export.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_fd__export_csv.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_fd__export_html.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_fd__export_rq.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_fd_table.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_filter.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_item.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_item_table.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_quickmatch.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_softmatch.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_softmatch__ruleset_mode_compare.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fd\fd_softmatch__simple_mode_compare.cpp">
+      <Filter>Source Files\fd</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_buf.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_buf_table.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_crec.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_crecvec.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_frag.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_patchset.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_ptable.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="fim\fim_ptable_table.cpp">
+      <Filter>Source Files\fim</Filter>
+    </ClCompile>
+    <ClCompile Include="poi\poi_item.cpp">
+      <Filter>Source Files\poi</Filter>
+    </ClCompile>
+    <ClCompile Include="poi\poi_item_table.cpp">
+      <Filter>Source Files\poi</Filter>
+    </ClCompile>
+    <ClCompile Include="fl\fl_fl.cpp">
+      <Filter>Source Files\fl</Filter>
+    </ClCompile>
+    <ClCompile Include="fl\fl_line.cpp">
+      <Filter>Source Files\fl</Filter>
+    </ClCompile>
+    <ClCompile Include="fl\fl_run.cpp">
+      <Filter>Source Files\fl</Filter>
+    </ClCompile>
+    <ClCompile Include="fl\fl_run_list.cpp">
+      <Filter>Source Files\fl</Filter>
+    </ClCompile>
+    <ClCompile Include="fl\fl_run_list_endpoints.cpp">
+      <Filter>Source Files\fl</Filter>
+    </ClCompile>
+    <ClCompile Include="fs\fs_fs.cpp">
+      <Filter>Source Files\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="fs\fs_fs_table.cpp">
+      <Filter>Source Files\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_css.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__batchoutput_html_sxs.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__batchoutput_html_traditional.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__batchoutput_html_unified.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__batchoutput_text_traditional.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__batchoutput_text_unified.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__build_displaylist.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__build_vecline.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__fixup_nextprev.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__insert_omitted.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__intraline.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_de__patch.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_line.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_mark.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_sync.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_sync_line_omitted.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="de\de_sync_list.cpp">
+      <Filter>Source Files\de</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_choose_dlg.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_context.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_context_dlg.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_lomit.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_lomit_dlg.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_ruleset.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_ruleset_dlg.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="rs\rs_ruleset_table.cpp">
+      <Filter>Source Files\rs</Filter>
+    </ClCompile>
+    <ClCompile Include="xt\xt_tool.cpp">
+      <Filter>Source Files\xt</Filter>
+    </ClCompile>
+    <ClCompile Include="xt\xt_tool_dlg.cpp">
+      <Filter>Source Files\xt</Filter>
+    </ClCompile>
+    <ClCompile Include="xt\xt_tool_table.cpp">
+      <Filter>Source Files\xt</Filter>
+    </ClCompile>
+    <ClCompile Include="key\key_license.cpp">
+      <Filter>Source Files\key</Filter>
+    </ClCompile>
+    <ClCompile Include="key\sg_uuid.cpp">
+      <Filter>Source Files\key</Filter>
+    </ClCompile>
+    <ClCompile Include="key\sghash.cpp">
+      <Filter>Source Files\key</Filter>
+    </ClCompile>
+    <ClCompile Include="key\sghash__sha1.cpp">
+      <Filter>Source Files\key</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_nag.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_nag__license.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_nag__new_revision.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_open_autocomplete.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_paid.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\dlg_show_shortcut_details.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_app__batchoutput.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_shell_lnk.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_convert.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util_misc.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gui\AboutBox.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\branding.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\cl_args.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_auto_merge.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_auto_merge_result_summary.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_insert_mark.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_license.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_open.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Doc.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\FrameFactory.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Glance.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_app.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_app__banner.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_dcl.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_frame.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_frame__event_table.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_frame__iface_defs.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\MessageOutputString.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\MyBusyInfo.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\MyFindData.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\MyStaticText.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\OptionsDlg.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Resources.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\SupportDlg.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\TaskListPanel.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\View.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFile.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFile__iface_defs.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFile__scroll.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFile__splitter.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFile__subwin.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFileCoord.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFileFont.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFilePanel.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFilePanel__kb.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFilePanel__mouse.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFilePanel__paint.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFilePanel__selection.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFolder.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFolder_ImageList.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFolder_ListCtrl.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewFolder_ListItemAttr.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewPrintout.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ViewPrintoutFolderData.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Artwork\hdr\DiffMergeSS.h">
+      <Filter>Header Files\gui\Artwork\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Artwork\hdr\ToolbarAd.h">
+      <Filter>Header Files\gui\Artwork\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileDiff_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileDiff_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileEqual_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileEquivalent_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileMerge_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__FileNoPeer_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__LineNumbers_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__Pilcrow_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__Redo_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__Redo_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__SplitHorizontally_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__SplitVertically_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__Undo_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\Custom__Undo_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__automerge.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__automerge__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_all.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_all__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_ctx.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_ctx__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_dif.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_32__dop_dif__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_back_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_back_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32__conflict.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32__conflict__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_down_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_next_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_next_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32__conflict.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32__conflict__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_Data__fila_up_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__copy_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__copy_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_zoom_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__folder_zoom_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__paste_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__paste_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__scissors_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_Vista_General__scissors_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_XMac_General__disk_32.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IconShock\hdr\IS_XMac_General__disk_32__dis.h">
+      <Filter>Header Files\gui\IconShock\hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\ConfigDcl.h">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\ConfigMacros.h">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\ConfigPch.h">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\wx_proportional_splitter.h">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="util\json_defs.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\jsonreader.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\jsonval.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\jsonwriter.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_background_thread_helper.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_bitmap_button_validator.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_cbl.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_conditional_nonblank_text_validator.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_dcl.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_dont_show_again_msgbox.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_enc.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_error.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_error__defs.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_GlobalProps.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_GlobalProps__defs.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_help_dlg.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_log.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_nonblank_text_validator.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_perf.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_reftab.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_regexp_text_validator.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_treebook.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_dcl.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_fd.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_fd_table.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_filter.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_item.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_item_table.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_quickmatch.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fd\fd_softmatch.h">
+      <Filter>Header Files\fd</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_buf.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_buf_table.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_crec.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_crecvec.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_dcl.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_frag.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_patchset.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_ptable.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="fim\fim_ptable_table.h">
+      <Filter>Header Files\fim</Filter>
+    </ClInclude>
+    <ClInclude Include="poi\poi.h">
+      <Filter>Header Files\poi</Filter>
+    </ClInclude>
+    <ClInclude Include="poi\poi_dcl.h">
+      <Filter>Header Files\poi</Filter>
+    </ClInclude>
+    <ClInclude Include="poi\poi_item.h">
+      <Filter>Header Files\poi</Filter>
+    </ClInclude>
+    <ClInclude Include="poi\poi_item_table.h">
+      <Filter>Header Files\poi</Filter>
+    </ClInclude>
+    <ClInclude Include="fl\fl.h">
+      <Filter>Header Files\fl</Filter>
+    </ClInclude>
+    <ClInclude Include="fl\fl_dcl.h">
+      <Filter>Header Files\fl</Filter>
+    </ClInclude>
+    <ClInclude Include="fl\fl_fl.h">
+      <Filter>Header Files\fl</Filter>
+    </ClInclude>
+    <ClInclude Include="fl\fl_line.h">
+      <Filter>Header Files\fl</Filter>
+    </ClInclude>
+    <ClInclude Include="fl\fl_run.h">
+      <Filter>Header Files\fl</Filter>
+    </ClInclude>
+    <ClInclude Include="fl\fl_run_list.h">
+      <Filter>Header Files\fl</Filter>
+    </ClInclude>
+    <ClInclude Include="fl\fl_run_list_endpoints.h">
+      <Filter>Header Files\fl</Filter>
+    </ClInclude>
+    <ClInclude Include="fs\fs.h">
+      <Filter>Header Files\fs</Filter>
+    </ClInclude>
+    <ClInclude Include="fs\fs_dcl.h">
+      <Filter>Header Files\fs</Filter>
+    </ClInclude>
+    <ClInclude Include="fs\fs_fs.h">
+      <Filter>Header Files\fs</Filter>
+    </ClInclude>
+    <ClInclude Include="fs\fs_fs_table.h">
+      <Filter>Header Files\fs</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de_css.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de_dcl.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de_de.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de_mark.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de_sync.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de_sync_line_omitted.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="de\de_sync_list.h">
+      <Filter>Header Files\de</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_choose_dlg.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_context.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_context_dlg.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_dcl.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_lomit.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_lomit_dlg.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_ruleset.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_ruleset_dlg.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="rs\rs_ruleset_table.h">
+      <Filter>Header Files\rs</Filter>
+    </ClInclude>
+    <ClInclude Include="xt\xt.h">
+      <Filter>Header Files\xt</Filter>
+    </ClInclude>
+    <ClInclude Include="xt\xt_dcl.h">
+      <Filter>Header Files\xt</Filter>
+    </ClInclude>
+    <ClInclude Include="xt\xt_tool.h">
+      <Filter>Header Files\xt</Filter>
+    </ClInclude>
+    <ClInclude Include="xt\xt_tool_dlg.h">
+      <Filter>Header Files\xt</Filter>
+    </ClInclude>
+    <ClInclude Include="xt\xt_tool_table.h">
+      <Filter>Header Files\xt</Filter>
+    </ClInclude>
+    <ClInclude Include="key\key.h">
+      <Filter>Header Files\key</Filter>
+    </ClInclude>
+    <ClInclude Include="key\key_license.h">
+      <Filter>Header Files\key</Filter>
+    </ClInclude>
+    <ClInclude Include="key\sg_uuid.h">
+      <Filter>Header Files\key</Filter>
+    </ClInclude>
+    <ClInclude Include="key\sghash.h">
+      <Filter>Header Files\key</Filter>
+    </ClInclude>
+    <ClInclude Include="key\sghash__private.h">
+      <Filter>Header Files\key</Filter>
+    </ClInclude>
+    <ClInclude Include="key\sghash__sha1.h">
+      <Filter>Header Files\key</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_curl.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_nag.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_open_autocomplete.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_paid.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\dlg_show_shortcut_details.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_shell_lnk.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util_convert.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gui\Resources\apply_left_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\apply_right_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\atmark_16x16.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\auto_merge_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\change_next_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\change_prev_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\checkmark_16x16.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\conflict_next_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\conflict_prev_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\dop_all_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\dop_ctx_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\dop_dif_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\dop_eql_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\dop_omitted_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\dop_squiggles_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\edit_copy_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\edit_cut_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\edit_paste_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\file_diff_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\file_merge_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\folder_diff_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\folder_equal_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\folder_folders_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\folder_nopeer_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\line_numbers_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\minusmark_16x16.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\pilcrow_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\plusmark_16x16.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\questionmark_16x16.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\save_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\sg_32x32.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\tab2_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\tab4_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\tab8_24x24.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Resources\xmark_16x16.xpm">
+      <Filter>Header Files\gui\Resources</Filter>
+    </None>
+    <None Include="gui\Artwork\DiffMergeIcon.xpm">
+      <Filter>Header Files\gui\Artwork</Filter>
+    </None>
+    <None Include="gui\Artwork\DiffMergeIcon.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="gui\Resources\FolderWindow\blank.xpm" />
+    <None Include="gui\Resources\FolderWindow\error.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_equal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_equivalent.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_notequal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_file_plusminus.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_folder_plusminus.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_folder.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_link_equal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_link_notequal.xpm" />
+    <None Include="gui\Resources\FolderWindow\flat_link_plusminus.xpm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui\gui.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

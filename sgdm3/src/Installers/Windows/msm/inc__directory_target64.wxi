@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2010-2011 SourceGear, LLC -->
+
+<Include>
+
+  <!-- Define the target directory in Program Files. -->
+
+  <Directory Id="ProgramFiles64Folder">
+    <Directory Id="dir_SourceGear64" Name="SourceGear">
+      <Directory Id="dir_Common64" Name="Common">
+
+	<!-- Normally this Id would be "APPLICATIONFOLDER" but we do not    -->
+	<!-- want to inherit the installation directory from the containing -->
+	<!-- MSI (assuming it is using WixUI_Advanced).  We want the        -->
+	<!-- DiffMerge EXE and Shell Extension installed in a known/shared  -->
+	<!-- location so that it can be used by both Vault and Veracity.    -->
+
+	<Directory Id="dir_DiffMerge64" Name="DiffMerge" />
+
+      </Directory>
+    </Directory>
+  </Directory>
+
+</Include>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <?include inc__msm_guids.wxi ?>
+    <?include inc__variables.wxi ?>
+
+    <DirectoryRef Id="$(var.dir_DiffMergeNative)">
+      <Component 
+         Id="cmp7664C91FAE6000B366D7BA76B692A3B9"
+	 Guid="$(var.GUID_License_rtf)"
+	 Win64="$(var.Is64)">
+
+        <File
+	   Id="cmp7664C91FAE6000B366D7BA76B692A3B9"
+	   CompanionFile="file__diffmerge_exe"
+	   Source="$(var.LayoutRoot)\License.rtf" />
+
+	<RegistryValue
+	   Root="HKLM"
+	   Key="$(var.HKLM_RegistryKey)"
+	   Type="string"
+	   Name="License"
+	   Value="[$(var.dir_DiffMergeNative)]License.rtf" />
+
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="frag__cg__License_rtf">
+      <ComponentRef Id="cmp7664C91FAE6000B366D7BA76B692A3B9" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>
